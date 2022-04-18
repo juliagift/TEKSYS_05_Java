@@ -47,7 +47,7 @@ public class LoopsIfStatements {
 			System.out.println("not in range");
 		}
 		
-		System.out.println("Hi, what i your name?");
+		System.out.println("Hi, what is your name?");
 		
 		String firstName = userInput.nextLine();
 		
