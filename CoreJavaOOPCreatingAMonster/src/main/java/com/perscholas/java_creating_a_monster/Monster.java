@@ -29,7 +29,4 @@ public class Monster {
 		return "!^_&^$@+%$* I don't know how to attack!";
 	}
 
-
-
-
 }
