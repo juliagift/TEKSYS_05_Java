@@ -1,6 +1,6 @@
 package com.company;
 
-public class Manager extends Employee {            //Manager-child  Employee-parent
+public class Manager extends Employee implements AccountActionsIMPL{            //Manager-child  Employee-parent
 	
 	//fields
 	private String timeCards;
@@ -27,13 +27,24 @@ public class Manager extends Employee {            //Manager-child  Employee-par
 		return "Manager [timeCards=" + timeCards + "]";
 	}
 
-	
+	@Override
+	public void withdraw(float amount, float withdrawAmount) {
+		// TODO Auto-generated method stub
+		
+	}
 
+	@Override
+	public void deposit(float amount, float depositAmount) {
+		// TODO Auto-generated method stub
+		
+	}
 	
-
-	
-	
-	
+	// any number of arguments of given datatype int
+	public void printThis(int ...val) {
+		for(int i : val) {
+			System.out.println(i);
+		}
+	}
 
 	
 

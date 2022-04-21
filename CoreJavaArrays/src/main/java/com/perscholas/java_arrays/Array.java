@@ -15,7 +15,7 @@ public class Array {
 		System.out.println(arr[1]);
 		System.out.println(arr[2]);
 		
-		
+		/*
 		//Question 2
 		int[] arr = {13, 5, 7, 68, 2};
 		
@@ -101,6 +101,7 @@ public class Array {
 		System.out.println("The smallest number is " +arr[0]);
 		System.out.println("The biggest number is " +arr[arr.length - 1]);
 		
+		*/
 		//Question 10
 		
 		String[] strArr = {"49", "dog", "cat", "fish", "1.25"};
