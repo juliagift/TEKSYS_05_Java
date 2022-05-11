@@ -10,6 +10,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -98,7 +99,7 @@ public class Main {
 		//Reading and Writing files
 		
 		//created a CSV file
-		String path = "newfile.csv";
+		//String path = "newfile.csv";
 		
 		//try to run this code first
 //		try {
@@ -131,27 +132,29 @@ public class Main {
 		//return an array of files
 //		File[] fileWithPath = file.listFiles();
 		
-		try {
-			
-			//bufferedreader is calling input stream
-			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-			
-			System.out.println("What is your name?");
-			//storing name
-			String name = reader.readLine();
-			
-			System.out.println("What is your job?");
-			String job = reader.readLine();
-			
-			System.out.format("%s, %s", name, job);
-			reader.close();
-		} catch(IOException ioe) {
-			System.out.println("IO in BufferedReader in main");
-			ioe.printStackTrace();
-		}
+//		try {
+//			
+//			//bufferedreader is calling input stream
+//			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+//			
+//			System.out.println("What is your name?");
+//			//storing name
+//			String name = reader.readLine();
+//			
+//			System.out.println("What is your job?");
+//			String job = reader.readLine();
+//			
+//			System.out.format("%s, %s", name, job);
+//			reader.close();
+//		} catch(IOException ioe) {
+//			System.out.println("IO in BufferedReader in main");
+//			ioe.printStackTrace();
+//		}
 		
+		String str = "Hello  World";
+		String[] str2 = str.split("\\s+");
+		System.out.println(Arrays.toString(str2));
 		
-
 
 	}
 

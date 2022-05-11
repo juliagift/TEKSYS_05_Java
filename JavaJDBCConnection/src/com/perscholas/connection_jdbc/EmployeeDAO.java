@@ -22,24 +22,36 @@ public class EmployeeDAO {
 		return conn;
 	}
 	
-	public EmployeeModel getEmployeebyID(int id) {
+	public EmployeeModel getEmployeeById(int id) {
 		
-		EmployeeModel employee = new EmployeeModel();
+		EmployeeModel employeeModel = new EmployeeModel();
 		
 		try {
 			connection = getConnection();
-			String sql = "SELECT * FROM employees";
+			String sql = "SELECT * FROM employees WHERE employeeNumber = ?";
+			
 			
 			ps = connection.prepareStatement(sql);
+			
+			ps.setInt(1, 1056);
 			
 			resultSet = ps.executeQuery();
 			
 			while(resultSet.next()) {
+				EmployeeModel employee = new EmployeeModel();
+				employee.setEmployeeNumber(resultSet.getInt("employeeNumber"));
+				employee.setLastName(resultSet.getString("lastName"));
+				employee.setFirstName(resultSet.getString("firstName"));
+				employee.setExtension(resultSet.getString("extension"));
+				employee.setJobTitle(resultSet.getString("jobTitle"));	
+				
 				System.out.println(
-						"EmployeeNumber: " +resultSet.getInt("employeeNumber") +
-						"First Name: " + resultSet.getString("firstName")+
-						"Last Name: " + resultSet.getString("lastName")+
+						"EmployeeNumber: " +resultSet.getInt("employeeNumber") + ", "+
+						"First Name: " + resultSet.getString("firstName")+ ", "+
+						"Last Name: " + resultSet.getString("lastName")+", "+
 						"Job Title: " + resultSet.getString("jobTitle")
+						
+						
 						);
 			}
 			
@@ -47,7 +59,7 @@ public class EmployeeDAO {
 			e.printStackTrace();
 		}
 		
-		return employee;
+		return employeeModel;
 	}
 	
 	public EmployeeModel createNewEmployee() throws SQLException {

@@ -11,7 +11,7 @@ public class Main {
 		
 		EmployeeModel employeeModelOne = new EmployeeModel();
 		
-		System.out.println(employeeOne.getEmployeebyID(1002));
+		System.out.println(employeeOne.getEmployeeById(1002));
 		
 		try {
 			employeeOne.createNewEmployee();

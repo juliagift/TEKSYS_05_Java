@@ -1,0 +1,57 @@
+body {
+  background-color: rgb(101, 242, 105);
+}
+
+div div {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: aliceblue;
+}
+
+a:link {
+  color: #ff0000;
+}
+
+a:visited {
+  color: #00ff00;
+}
+
+a:hover {
+  color: #ff00ff;
+}
+a:active {
+  color: #0000ff;
+}
+
+.text_span {
+  margin: 2px 0px 5px 10px;
+}
+
+.outer_div {
+  width: 500px;
+  height: 500px;
+  background-color: aquamarine;
+  margin: 0px auto;
+}
+
+.inner_div_one {
+  width: 200px;
+  height: 100px;
+  background-color: blueviolet;
+  padding: 20px;
+  border: 20px solid red;
+  margin: 0px auto;
+}
+
+.inner_div_two {
+  width: 200px;
+  height: 200px;
+  background-color: blueviolet;
+  padding: 20px;
+  border: 20px solid red;
+  margin: 0px auto;
+  display: inline-block;
+}
+
+#btn {
+  color: rgba(0, 255, 149, 0.518);
+}
