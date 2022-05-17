@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,300;8..144,400;8..144,700&display=swap');
+/* css rules */
+.page_header {
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 700;
+    font-size: x-large;
+    /* float: center; */
+    /* text-align: center; */
+    /* margin: 0px auto; */
+}
+
+.form_content {
+    color: rgb(29, 29, 177);
+    border: 2px solid black;
+    margin: 10px;
+    box-shadow: 10px 10px lawngreen;
+    /* float: right; */
+    /* text-align: center; */
+}
+
+.outer_div {
+    height: 200px;
+    width: 200px;
+    background-color: blue;
+    border: 2px solid red;
+    transition-property: background-color border height width;
+    transition-duration: 2s, 2s, 2s, 2s;
+    /* transition: background-color 2s linear 2s; */
+}
+
+.outer_div:hover {
+    height: 300px;
+    width: 300px;
+    background-color: rgb(167, 9, 235);
+    border: 4px dashed gold;
+}
+
+body {
+    background-color: firebrick;
+}
+
+@media screen and (min-width: 480px) {
+    body {
+        background-color: rgb(126, 71, 255);
+    }
+}
+
+@media screen and (min-width: 600px) {
+    body {
+        background-color: rgb(19, 213, 247);
+    }
+}

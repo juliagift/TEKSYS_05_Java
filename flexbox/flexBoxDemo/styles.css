@@ -1,0 +1,37 @@
+.menu_container {
+    display: flex;
+
+}
+
+.title_container {
+    color: burlywood;
+    flex: 2;
+}
+
+.one,
+.two,
+.three,
+.four,
+.five {
+    display: flex;
+    height: 300px;
+    width: 200px;
+    border: 2px solid greenyellow;
+    background-color: aqua;
+    justify-content: center;
+    /* flex:3; */
+}
+
+.two,
+.five {
+    background-color: blue;
+}
+
+.outer_container {
+    display: flex;
+    flex: 10;
+    /* justify-content: space-evenly; */
+    /* flex-wrap: wrap; */
+    align-items: center;
+    flex-flow: row wrap;
+}
