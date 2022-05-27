@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div>
+		<label th:for="${#ids.next('covered')}"
+			th:text="#{seedstarter.covered}">Covered</label> <input
+			type="checkbox" th:field="*{covered}" />
+	</div>
+
+</body>
+</html>
