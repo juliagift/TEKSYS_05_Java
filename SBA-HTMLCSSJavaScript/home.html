@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <title>Julia's Copay Program</title>
     <style>
+      .description h1,
       section p strong {
         color: #6ab446;
       }
@@ -13,7 +14,7 @@
     <div class="page-header header container-fluid" id="content">
       <div class="description">
         <h1 id="welcome">Welcome to Julia's Copay Program!</h1>
-        <p style="color: black">
+        <p>
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text ever
           since the 1500s, when an unknown printer took a galley of type and
@@ -24,7 +25,7 @@
           more recently with desktop publishing software like Aldus PageMaker
           including versions of Lorem Ipsum.
         </p>
-        <p style="color: black">
+        <p>
           Contrary to popular belief, Lorem Ipsum is not simply random text. It
           has roots in a piece of classical Latin literature from 45 BC, making
           it over 2000 years old. Richard McClintock, a Latin professor at
@@ -40,7 +41,9 @@
         </p>
         <section>
           <p>
-            <strong>We are here to help. Here are the drugs that we offer:</strong>
+            <strong
+              >We are here to help. Here are the drugs that we offer:</strong
+            >
           </p>
         </section>
         <br />
@@ -54,12 +57,12 @@
           </table>
         </div>
 
-        <p style="color: black">
+        <p>
           If you are interested in the drugs that we offer, please answer the
           following questions:
         </p>
         <form id="precheck" action="./registration.html">
-          <p style="color: black">Are you a US citizen?</p>
+          <p>Are you a US citizen?</p>
           <input type="radio" id="citizen_yes" name="citizen" />
           <label for="citizen_yes">Yes</label><br />
           <input type="radio" id="citizen_no" name="citizen" />
@@ -67,18 +70,21 @@
 
           <br />
 
-          <p style="color: black">Do you have commercial insurance?</p>
+          <p>Do you have commercial insurance?</p>
           <input type="radio" id="insurance_yes" name="insurance" />
           <label for="insurance_yes">Yes</label><br />
           <input type="radio" id="insurance_no" name="insurance" />
           <label for="insurance_no">No</label><br />
+
+          <br />
+
           <input
             onclick="return validateInput()"
             type="submit"
             value="Submit"
           />
         </form>
-        <p id = "errormsg"></p>
+        <p id="errormsg"></p>
       </div>
     </div>
 

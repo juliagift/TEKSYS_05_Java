@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>PatientById</title>
+</head>
+<body>
+	<table style="border: 1px solid black">
+		<tr>
+			<!-- <td th:text="${patient}"></td> -->
+			<td th:text="${patient.patientId}"></td>
+			<td th:text="${patient.firstName}"></td>
+			<td th:text="${patient.lastName}"></td>
+			<td th:text="${patient.gender}"></td>
+			<!-- <td th:text="${patient.dob"></td> -->
+			<td th:text="${patient.email}"></td>
+			<td th:text="${patient.phoneNumber}"></td>
+			<td th:text="${patient.address1}"></td>
+			<td th:text="${patient.address2}"></td>
+			<td th:text="${patient.city}"></td>
+			<td th:text="${patient.state}"></td>
+			<td th:text="${patient.zip5}"></td>
+			<td th:text="${patient.zip4}"></td>
+			<td th:text="${patient.loginId}"></td>
+			
+		</tr>
+	</table>
+</body>
+</html>

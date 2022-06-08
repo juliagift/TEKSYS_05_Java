@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta
+	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+	name="viewport">
+<meta content="ie=edge" http-equiv="X-UA-Compatible">
+<title>Patient</title>
+<link
+	href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css"
+	rel="stylesheet">
+</head>
+<body class="container">
+	<h2>Patients List</h2>
+	<table class="table table-striped table-bordered ">
+		<tr>
+			<th>ID</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Gender</th>
+			<th>DOB</th>
+			<th>Email</th>
+			<th>Login ID</th>
+		</tr>
+		
+		<tr th:each="patient : ${patients}">
+			<td class="align-middle" th:text="${patient.patientId}"></td>
+			<td class="align-middle" th:text="${patient.firstName}"></td>
+			<td class="align-middle" th:text="${patient.lastName}"></td>
+			<td class="align-middle" th:text="${patient.gender}"></td>
+			<td class="align-middle" th:text="${patient.dob}"></td>
+			<td class="align-middle" th:text="${patient.email}"></td>
+			<td class="align-middle" th:text="${patient.loginId}"></td>
+		</tr>
+	</table>
+</body>
+</html>

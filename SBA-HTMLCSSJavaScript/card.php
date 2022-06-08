@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
         <title>Card</title>
         <link rel="stylesheet" type="text/css" href="./cardstyles.css" />

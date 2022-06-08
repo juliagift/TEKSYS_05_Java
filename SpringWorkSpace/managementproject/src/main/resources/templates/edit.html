@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8">
+	<title>Edit</title>
+</head>
+
+<body>
+
+<form method="post" th:action="'/'+${userInfo.id}" th:object="${userInfo}">
+  <input id="firstName" placeholder="Enter First Name" required th:field="*{firstName}" type="text"/>
+  <input id="lastName" placeholder="Enter Last Name" required th:field="*{lastName}" type="text"/>
+  <input id="activeFlag" type="hidden" th:field="*{active}" value='true'>
+  <input type="submit" value="Update"
+         onclick="document.getElementById('activeFlag').value='true'">
+  <input type="submit" value="Delete"
+         onclick="document.getElementById('activeFlag').value='false'">
+
+</form>
+
+</body>
+
+</html>

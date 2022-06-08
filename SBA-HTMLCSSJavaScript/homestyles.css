@@ -1,55 +1,35 @@
-@import  url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Teko:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab&family=Tiro+Devanagari+Marathi:ital@0;1&family=Tiro+Devanagari+Sanskrit&display=swap");
 
 html {
-    background-color: #f2f6e9;
-    background-image: url('./images/home-background.jpg');
-    height: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+  background-image: url("./images/home-background.jpg");
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.description {
+  font-family: "Tiro Devanagari Marathi", serif;
 }
 
 #welcome {
-    text-align: center;
+  text-align: center;
 }
 
 #demo {
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-}
-
-description {
-	left: 50%;
-	position: absolute;
-	top: 45%;
-	text-align: center;
-    margin: 20px;
-}
-
-.description h1 {
-	color: #6ab446;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 
 .description p {
-	color: #fff;
-	font-size: 1.3rem;
-	line-height: 1.5;
+  color: black;
+  font-size: 1.3rem;
+  line-height: 1.5;
 }
 
-.description select {
-    border:1px solid #6ab446;
-    background:#6ab446;
-    border-radius: 0;
-    color:#fff;
-}
-
-.description button:hover {
-	border:1px solid #fff;
-    background:#fff;
-    color:#000;
-}
-
-table, th, td {
-    border:2px solid black;
+table,
+th,
+td {
+  border: 2px solid black;
 }

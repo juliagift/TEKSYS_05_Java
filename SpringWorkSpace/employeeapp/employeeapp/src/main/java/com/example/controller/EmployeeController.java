@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.employeeapp.controller.EmployeeNotFoundException;
 import com.example.entity.Employee;
 import com.example.repository.EmployeeRepository;
 

@@ -1,11 +1,11 @@
 package com.example.studentapp;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+//import org.springframework.boot.SpringApplication;
+//import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.example.controller.StudentController;
-import com.example.entity.StudentEntity;
-import com.example.service.StudentView;
+import com.example.studentapp.controller.StudentController;
+import com.example.studentapp.entity.StudentEntity;
+import com.example.studentapp.service.StudentView;
 
 //@SpringBootApplication
 public class StudentappApplication {
