@@ -15,12 +15,19 @@
 	<h2>Patients List</h2>
 	<table class="table table-striped table-bordered ">
 		<tr>
-			<th>ID</th>
+			<th>Patient ID</th>
 			<th>First Name</th>
 			<th>Last Name</th>
 			<th>Gender</th>
 			<th>DOB</th>
 			<th>Email</th>
+			<th>Phone Number</th>
+			<th>Address1</th>
+			<th>Address2</th>
+			<th>City</th>
+			<th>State</th>
+			<th>Zip5</th>
+			<th>Zip4</th>
 			<th>Login ID</th>
 		</tr>
 		
@@ -31,7 +38,14 @@
 			<td class="align-middle" th:text="${patient.gender}"></td>
 			<td class="align-middle" th:text="${patient.dob}"></td>
 			<td class="align-middle" th:text="${patient.email}"></td>
-			<td class="align-middle" th:text="${patient.loginId}"></td>
+			<td class="align-middle" th:text="${patient.phoneNumber}"></td>
+			<td class="align-middle" th:text="${patient.address1}"></td>
+			<td class="align-middle" th:text="${patient.address2}"></td>
+			<td class="align-middle" th:text="${patient.city}"></td>
+			<td class="align-middle" th:text="${patient.state}"></td>
+			<td class="align-middle" th:text="${patient.zip5}"></td>
+			<td class="align-middle" th:text="${patient.zip4}"></td>
+			<td class="align-middle" th:text="${patient.login.loginId}"></td>
 		</tr>
 	</table>
 </body>

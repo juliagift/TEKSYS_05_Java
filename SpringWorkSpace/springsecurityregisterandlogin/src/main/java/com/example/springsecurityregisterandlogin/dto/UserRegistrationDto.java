@@ -2,12 +2,15 @@ package com.example.springsecurityregisterandlogin.dto;
 
 import javax.validation.constraints.NotEmpty;
 
+import net.javaguides.springboot.springsecurity.constraint.FieldMatch;
+
 @FieldMatch.List({
 		@FieldMatch(first = "password", second = "confirmPassword", message = "The password fields must match"),
 		@FieldMatch(first = "email", second = "confirmEmail", message = "The email fields must match") })
 public class UserRegistrationDto {
 
-	@NotEmpty
+	//@NotEmpty
+	@NotN
 	private String firstName;
 
 	@NotEmpty

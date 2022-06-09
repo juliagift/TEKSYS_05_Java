@@ -1,4 +1,4 @@
-package com.example.springsecurityregisterandlogin;
+package com.example.springsecurityregisterandlogin.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -11,10 +11,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
-	@Autowired
-	private UserService userService;
+	 @Autowired
+	   private UserService userService;
 
 	   @Override
 	   protected void configure(HttpSecurity http) throws Exception {

@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,14 +18,16 @@ import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 
 @Entity
+@Table (name = "patient")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Table (name = "patient")
 public class Patient {
 	
 	@Id
@@ -79,9 +82,22 @@ public class Patient {
 	@Column(name = "zip4")
 	private Integer zip4;
 	
-	@OneToOne(targetEntity = Login.class, cascade = CascadeType.ALL)
+	//@OneToOne(targetEntity = Login.class, cascade = CascadeType.ALL)
+//	@OneToOne(targetEntity = Login.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	//@JoinColumn(name = "login_id")
+	//private Long loginId;
+	
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "login_id")
-	private Long loginId;
+	private Login login;
+
+//	@Override
+//	public String toString() {
+//		return "Patient [patientId=" + patientId + ", firstName=" + firstName + ", lastName=" + lastName + ", gender="
+//				+ gender + ", dob=" + dob + ", email=" + email + ", phoneNumber=" + phoneNumber + ", address1="
+//				+ address1 + ", address2=" + address2 + ", city=" + city + ", state=" + state + ", zip5=" + zip5
+//				+ ", zip4=" + zip4 + ", login=" + login + "]";
+//	}
 
 	public Long getPatientId() {
 		return patientId;
@@ -187,13 +203,16 @@ public class Patient {
 		this.zip4 = zip4;
 	}
 
-	public Long getLoginId() {
-		return loginId;
+	public Login getLogin() {
+		return login;
 	}
 
-	public void setLoginId(Long loginId) {
-		this.loginId = loginId;
+	public void setLogin(Login login) {
+		this.login = login;
 	}
+	
+	
+	
 	
 	
 }

@@ -18,6 +18,12 @@ public class ManufacturerController {
 	@GetMapping("/patients")
 	public String getAllPatients(Model model) {
 		List<Patient> patients = manufacturerService.getAllPatients();
+		
+//		System.out.println("hello");
+//		patients.forEach(patient -> {
+//			System.out.println(patient);
+//		});
+//		
 		model.addAttribute("patients", patients);
 
 		return "patient";

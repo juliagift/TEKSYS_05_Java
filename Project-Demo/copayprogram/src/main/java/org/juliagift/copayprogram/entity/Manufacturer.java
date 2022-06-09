@@ -32,7 +32,34 @@ public class Manufacturer {
 	@Column(name = "name")
 	private String name;
 	
-	@OneToOne(targetEntity = Login.class, cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "login_id")
-	private Long loginId;
+	private Login login;
+
+	public Long getManufacturerId() {
+		return manufacturerId;
+	}
+
+	public void setManufacturerId(Long manufacturerId) {
+		this.manufacturerId = manufacturerId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Login getLogin() {
+		return login;
+	}
+
+	public void setLogin(Login login) {
+		this.login = login;
+	}
+
+
+	
 }
