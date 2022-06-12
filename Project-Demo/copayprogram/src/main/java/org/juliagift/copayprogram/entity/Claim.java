@@ -56,15 +56,15 @@ public class Claim {
 	@Column(name = "transaction_date")
 	private Date transactionDate;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "card_id")
 	private Card card;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "pharmacy_id")
 	private Pharmacy pharmacy;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "drug_id")
 	private Drug drug;
 	

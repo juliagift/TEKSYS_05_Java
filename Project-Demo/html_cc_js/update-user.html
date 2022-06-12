@@ -1,0 +1,65 @@
+<!-- <!DOCTYPE html>
+<html lang="en"  xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Patient</title>
+</head>
+<body>
+    <form action="#" 
+  th:action="@{/update/{id}(id=${user.id})}" 
+  th:object="${user}" 
+  method="post">
+    <label for="name">Name</label>
+    <input type="text" th:field="*{name}" id="name" placeholder="Name">
+    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+    <label for="email">Email</label>
+    <input type="text" th:field="*{email}" id="email" placeholder="Email">
+    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+    <input type="submit" value="Update User">   
+</form>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8">
+	<title>[[${pageTitle}]]</title>
+</head> -->
+
+<body>
+	<div class="container-fluid">
+		<div class="text-center">
+			<h2>[[${pageTitle}]]</h2>
+		</div>
+		<form th:action="@{/save}" th:object="${patient}" method="post">
+			<!--   <input id="firstName" placeholder="Enter First Name" required th:field="*{firstName}" type="text"/>
+  <input id="lastName" placeholder="Enter Last Name" required th:field="*{lastName}" type="text"/>
+  <input id="email" placeholder="Enter Email" required th:field="*{firstName}" type="text"/>
+  <input id="lastName" placeholder="Enter Last Name" required th:field="*{lastName}" type="text"/>
+  <input id="activeFlag" type="hidden" th:field="*{active}" value='true'>
+  <input type="submit" value="Update" -->
+			<!--  onclick="document.getElementById('activeFlag').value='true'"> -->
+			<!-- <input type="submit" value="Delete"
+         onclick="document.getElementById('activeFlag').value='false'"> -->
+
+			<!-- Add hidden form field to handle update -->
+			<input type="hidden" th:field="*{patientId}" /> <label for="name">First
+				Name</label> <input type="text" th:field="*{firstName}" id="firstName"
+				placeholder="First Name"> <span
+				th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
+
+			<label for="email">Email</label> <input type="text"
+				th:field="*{email}" id="email" placeholder="Email"> <span
+				th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span> <input
+				type="submit" value="Update Patient">
+
+
+		</form>
+	</div>
+</body>
+
+</html>

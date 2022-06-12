@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Copay Program</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Copay Program</h1>
+        <hr>
+        <h2>Update Patient</h2>
+
+        <form action="#" th:action="@{/savePatient}" th:object="${patient}" method="POST">
+        
+        	<!-- Add hidden form field to handle update -->
+            <input type="hidden" th:field="*{patientId}" />
+        	
+            <input type="text" th:field="*{firstName}" placeholder="First Name" class="form-control mb-4 col-4">
+
+            <input type="text" th:field="*{lastName}" placeholder="Last Name" class="form-control mb-4 col-4">
+
+            <input type="text" th:field="*{gender}" placeholder="Gender" class="form-control mb-4 col-4">
+            
+            <input type="date" th:field="*{dob}" placeholder="Date" class="form-control mb-4 col-4">
+            
+             <input type="email" th:field="*{email}" placeholder="Email" class="form-control mb-4 col-4">
+
+            <input type="text" th:field="*{phoneNumber}" placeholder="Phone Number" class="form-control mb-4 col-4">
+            
+            <input type="text" th:field="*{address1}" placeholder="Address1" class="form-control mb-4 col-4">
+
+            <input type="text" th:field="*{address2}" placeholder="Address2" class="form-control mb-4 col-4">
+
+            <input type="text" th:field="*{city}" placeholder="City" class="form-control mb-4 col-4">
+            
+            <input type="text" th:field="*{state}" placeholder="State" class="form-control mb-4 col-4">
+            
+             <input type="text" th:field="*{zip5}" placeholder="Zip5" class="form-control mb-4 col-4">
+
+            <input type="text" th:field="*{zip4}" placeholder="Zip4" class="form-control mb-4 col-4">
+            
+            <input type="text" th:field="*{login}" placeholder="Login" class="form-control mb-4 col-4">
+
+            <button type="submit" class="btn btn-info col-2"> Save Patient</button>
+        </form>
+
+        <hr>
+
+        <a th:href="@{/}"> Back to Patient List</a>
+    </div>
+</body>
+
+</html>

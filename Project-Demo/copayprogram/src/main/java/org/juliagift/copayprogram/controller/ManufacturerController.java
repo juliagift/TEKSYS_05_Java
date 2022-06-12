@@ -9,25 +9,25 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-@Controller
+//@Controller
 public class ManufacturerController {
 	
-	@Autowired
-	private ManufacturerService manufacturerService;
-
-	@GetMapping("/patients")
-	public String getAllPatients(Model model) {
-		List<Patient> patients = manufacturerService.getAllPatients();
-		
-//		System.out.println("hello");
-//		patients.forEach(patient -> {
-//			System.out.println(patient);
-//		});
+//	@Autowired
+//	private ManufacturerService manufacturerService;
+//	
+//	//display list of patients
+//	@GetMapping("/")
+//	public String getAllPatients(Model model) {
+//		List<Patient> patients = manufacturerService.getAllPatients();
 //		
-		model.addAttribute("patients", patients);
-
-		return "patient";
-	}
+////		patients.forEach(patient -> {
+////			System.out.println(patient);
+////		});
+////		
+//		model.addAttribute("patients", patients);
+//
+//		return "patient";
+//	}
 	
 	
 }

@@ -210,6 +210,14 @@ public class Patient {
 	public void setLogin(Login login) {
 		this.login = login;
 	}
+
+	@Override
+	public String toString() {
+		return "Patient [patientId=" + patientId + ", firstName=" + firstName + ", lastName=" + lastName + ", gender="
+				+ gender + ", dob=" + dob + ", email=" + email + ", phoneNumber=" + phoneNumber + ", address1="
+				+ address1 + ", address2=" + address2 + ", city=" + city + ", state=" + state + ", zip5=" + zip5
+				+ ", zip4=" + zip4 + ", login=" + login + "]";
+	}
 	
 	
 	

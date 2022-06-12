@@ -41,56 +41,7 @@ public class Card {
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "drug_id")
-
 	private Drug drug;
-
-//	@OneToMany
-//	@JoinColumn(name = "claim_id")
-//	private List<Claim> claim;
-
-	public Long getCardId() {
-		return cardId;
-	}
-
-	public void setCardId(Long cardId) {
-		this.cardId = cardId;
-	}
-
-	public Double getBenefit() {
-		return benefit;
-	}
-
-	public void setBenefit(Double benefit) {
-		this.benefit = benefit;
-	}
-
-	public Patient getPatient() {
-		return patient;
-	}
-
-	public void setPatient(Patient patient) {
-		this.patient = patient;
-	}
-
-	public Drug getDrug() {
-		return drug;
-	}
-
-	public void setDrug(Drug drug) {
-		this.drug = drug;
-	}
-
-	@Override
-	public String toString() {
-		return "Card [cardId=" + cardId + ", benefit=" + benefit + ", patient=" + patient + ", drug=" + drug + "]";
-	}
-
-
-
 	
-
-
-	
-	
-	
+		
 }
