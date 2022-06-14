@@ -76,12 +76,13 @@ public class PatientServiceImpl implements PatientService{
 //	}
 	
 	
-
 	
 	public void deletePatientById(Long id) throws PatientNotFoundException {
 		Patient patient = patientRepository.findById(id)
 				.orElseThrow(() -> new PatientNotFoundException("Invalid patient id : " + id));
 		patientRepository.delete(patient);
+		
+		
 	}
 	
 	

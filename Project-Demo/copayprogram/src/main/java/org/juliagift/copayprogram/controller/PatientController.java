@@ -23,7 +23,7 @@ public class PatientController {
 	private PatientService patientService;
 	
 	//display list of patients
-		@GetMapping("/")
+		@GetMapping("/patients")
 		public String getAllPatients(Model model) {
 			List<Patient> patients = patientService.getAllPatients();
 			
@@ -35,82 +35,122 @@ public class PatientController {
 
 			return "index";
 		}
-		
-		@GetMapping("/showNewPatientForm")
-		 public String showNewEmployeeForm(Model model) {
-		     // create model attribute to bind form data
-		     Patient patient = new Patient();
-		     model.addAttribute("patient", patient);
-		     return "new_patient";
-		 }
-		
-		@PostMapping("/savePatient")
-		 public String savePatient(@ModelAttribute("patient") Patient patient) {
-		     // save patient to database
-		     patientService.savePatient(patient);
-		     return "redirect:/";
-		 }
-		
-	
-		@GetMapping("/showFormForUpdate/{id}")
-		public String getPatientById(@PathVariable("id") Long id, Model model, RedirectAttributes redirectAttributes) throws PatientNotFoundException{
-			// get patient from the service
-			Patient patient = patientService.getPatientById(id);
-			
-			 // set patient as a model attribute to pre-populate the form
-			model.addAttribute("patient", patient);
-			redirectAttributes.addFlashAttribute("message", "The user has been updated successfully.");
-	
-			//return "patientbyid";
-			return "update_patient";
-		}
-		
-		@DeleteMapping("/deletePatient/{id}")
-		public String deletePatient(@PathVariable ("id") Long id) {
-		 
-		 // call delete patient method 
-		 try {
-			patientService.deletePatientById(id);
-		} catch (PatientNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		 return "redirect:/";
-		}
-	
-//	//@GetMapping("/{id}")
-//	@GetMapping("/patients/{id}")
-//	public String getPatientById(@PathVariable("id") Long id, Model model, RedirectAttributes redirectAttributes) throws PatientNotFoundException{
-//		Patient patient = patientService.getPatientById(id);
-//		model.addAttribute("patient", patient);
-//		redirectAttributes.addFlashAttribute("userMessage", "The user has been saved successfully.");
-//
-//		return "patientbyid";
-//	}
+//		
+//		@GetMapping("/showNewPatientForm")
+//		 public String showNewEmployeeForm(Model model) {
+//		     // create model attribute to bind form data
+//		     Patient patient = new Patient();
+//		     model.addAttribute("patient", patient);
+//		     return "new_patient";
+//		 }
+//		
+//		@PostMapping("/savePatient")
+//		 public String savePatient(@ModelAttribute("patient") Patient patient) {
+//		     // save patient to database
+//		     patientService.savePatient(patient);
+//		     return "redirect:/";
+//		 }
+//		
 //	
-//
-//	//showUpdateForm() method is responsible for fetching the User entity that matches the supplied id from the database.
-//	//If the entity exists, it will be passed on as a model attribute to the update form view.
-//	//So, the form can be populated with the values of the  fields
-//	@GetMapping("/showeditform/{id}")
-//	public String showEditForm(@PathVariable("id") Long id, Model model, RedirectAttributes redirectAttributes) throws PatientNotFoundException {
-//		//get patient from service
+//		@GetMapping("/showFormForUpdate/{id}")
+//		public String getPatientById(@PathVariable("id") Long id, Model model, RedirectAttributes redirectAttributes) throws PatientNotFoundException{
+//			// get patient from the service
+//			Patient patient = patientService.getPatientById(id);
+//			
+//			 // set patient as a model attribute to pre-populate the form
+//			model.addAttribute("patient", patient);
+//			redirectAttributes.addFlashAttribute("message", "The user has been updated successfully.");
+//	
+//			//return "patientbyid";
+//			return "update_patient";
+//		}
 //		
-//		try {
-//		Patient patient = patientService.getPatientById(id);
-//		
-//		//set patient as a model attribute and pre-populate the form
-//		model.addAttribute("patient", patient);
-//		model.addAttribute("pageTitle", "Edit Patient Details (ID: " + id +")");
-//		return "editForm";
+//		@DeleteMapping("/deletePatient/{id}")
+//		public String deletePatient(@PathVariable ("id") Long id) {
+//		 
+//		 // call delete patient method 
+//		 try {
+//			patientService.deletePatientById(id);
 //		} catch (PatientNotFoundException e) {
-//			redirectAttributes.addFlashAttribute("userMessage", "The user has been saved successfully.");
-//			return "redirect:/patient/{id}";
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		 return "redirect:/";
 //		}
 //		
 //		
+//		
+		
+		
+		
+		
+	
+
+	@GetMapping("/patient/{id}")
+	public String getPatientById(@PathVariable("id") Long id, Model model, RedirectAttributes redirectAttributes) throws PatientNotFoundException{
+		Patient patient = patientService.getPatientById(id);
+		model.addAttribute("patient", patient);
+		redirectAttributes.addFlashAttribute("userMessage", "The user has been saved successfully.");
+
+		return "patientbyid";
+	}
+	
+	
+	
+	
+
+	//showUpdateForm() method is responsible for fetching the User entity that matches the supplied id from the database.
+	//If the entity exists, it will be passed on as a model attribute to the update form view.
+	//So, the form can be populated with the values of the  fields
+	@GetMapping("/showeditform/{id}")
+	public String showEditForm(@PathVariable("id") Long id, Model model, RedirectAttributes redirectAttributes) throws PatientNotFoundException {
+		//get patient from service
+		
+		try {
+		Patient patient = patientService.getPatientById(id);
+		
+		//set patient as a model attribute and pre-populate the form
+		model.addAttribute("patient", patient);
+		model.addAttribute("pageTitle", "Edit Patient Details (ID: " + id +")");
+		return "editForm";
+		} catch (PatientNotFoundException e) {
+			redirectAttributes.addFlashAttribute("userMessage", "The user has been saved successfully.");
+			return "redirect:/patient/{id}";
+		}
+		
+		
+	}
+	
+
+	
+	
+	
+	
+	@DeleteMapping("/delete/{id}")
+	public String deletePatientById(@PathVariable("id") Long id, Model model,
+			RedirectAttributes redirectAttributes) throws PatientNotFoundException {
+		
+		patientService.deletePatientById(id);
+//		model.addAttribute("patient", patient);
+//		String message = patient.getFirstName() + "Your account has been deleted";
+//		redirectAttributes.addFlashAttribute("userMessage", message);
+		return "redirect:/patients";
+	}
+	
+//	@DeleteMapping("/delete/{id}")
+//	public String deletePatientById(@PathVariable("id") Long id, Model model) throws PatientNotFoundException {
+//		
+//		Patient patient= patientService.deletePatientById(id);
+//		System.out.println(patient.getFirstName());
+//		model.addAttribute("patient", patient);
+//		
+//		return "patients";
+//
 //	}
-//	
+	
+	
+	
+	
 //	@PutMapping("/update/{id}")
 //	public String updatePatient(@PathVariable("id") Long id, @Valid Patient patient, 
 //			BindingResult bindingResult, Model model) {
@@ -141,20 +181,6 @@ public class PatientController {
 //		patientService.deletePatientById(id);
 //		
 //		return "redirect:/patient/{id}";
-//	}
-	
-	
-	
-	
-//	@DeleteMapping("/patients/{id}")
-//	public String deletePatientById(RedirectAttributes redirectAttributes, @PathVariable("id") Long id, 
-//			Model model) throws ChangeSetPersister.NotFoundException  {
-//		
-//		Patient patient = patientService.deletePatientById(id);
-//		model.addAttribute("patient", patient);
-//		String message = patient.getFirstName() + "Your account has been deleted";
-//		redirectAttributes.addFlashAttribute("userMessage", message);
-//		return "redirect:/patients";
 //	}
 	
 //	@PostMapping("/patients/{id}")
@@ -196,5 +222,7 @@ public class PatientController {
 //		return redirectView;
 //		
 //	}
+	
+	
 	
 }

@@ -44,17 +44,13 @@ public class Patient {
 	private String lastName;
 	
 	@NotNull
-	@Column(name = "gender")
-	private char gender;
-	
-	@NotNull
 	@Temporal(TemporalType.DATE)
 	@Column(name = "dob")
 	private Date dob;
 	
 	@NotNull
-	@Column(name = "email")
-	private String email;
+	@Column(name = "gender")
+	private char gender;
 	
 	@NotNull
 	@Column(name = "phone_number")
@@ -66,6 +62,10 @@ public class Patient {
 	
 	@Column(name = "address2")
 	private String address2;
+	
+	@NotNull
+	@Column(name = "email")
+	private String email;
 	
 	@NotNull
 	@Column(name = "city")
