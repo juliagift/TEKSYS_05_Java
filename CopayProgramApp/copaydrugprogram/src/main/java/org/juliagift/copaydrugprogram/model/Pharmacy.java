@@ -25,7 +25,6 @@ public class Pharmacy {
 	private Long pharmacyId;
 	
 	@NotNull
-	@Column(name = "name")
 	private String name;
 	
 	@NotNull
@@ -33,24 +32,18 @@ public class Pharmacy {
 	private String phoneNumber;
 	
 	@NotNull
-	@Column(name = "address1")
 	private String address1;
 	
-	@Column(name = "address2")
 	private String address2;
 	
 	@NotNull
-	@Column(name = "city")
 	private String city;
 	
 	@NotNull
-	@Column(name = "state")
 	private String state;
 	
 	@NotNull
-	@Column(name = "zip5")
 	private Integer zip5;
 	
-	@Column(name = "zip4")
 	private Integer zip4;
 }

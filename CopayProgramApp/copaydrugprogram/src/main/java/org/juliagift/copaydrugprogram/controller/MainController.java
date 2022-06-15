@@ -1,14 +1,10 @@
 package org.juliagift.copaydrugprogram.controller;
 
-import java.util.ArrayList;
-import java.util.List;
 
-import org.juliagift.copaydrugprogram.model.Drug;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class MainController {
@@ -33,15 +29,17 @@ public class MainController {
 		return "home";
 	}
 	
+	
+	
 //	@ModelAttribute("drugs")
 //	@PostMapping("/registration")
 //	public String getDrugs(Model model) {
 //		List<Drug> drugs = new ArrayList<Drug>();
-//		drugs.add(new Drug("Diabetedox", 1L));
-//		drugs.add(new Drug("Arthriticol", 2L));
-//		drugs.add(new Drug("Urimex", 3L));
-//		drugs.add(new Drug("Thrombitinin", 4L));
-//		drugs.add(new Drug("Cervisave", 5L));
+//		drugs.add(new Drug(1L, "Diabetedox"));
+//		drugs.add(new Drug(2L, "Arthriticol"));
+//		drugs.add(new Drug(3L, "Urimex"));
+//		drugs.add(new Drug(4L, "Thrombitinin"));
+//		drugs.add(new Drug(5L, "Cervisave"));
 //		
 //		model.addAttribute("drugs", drugs);
 //		

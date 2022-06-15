@@ -28,6 +28,7 @@ public class Login {
 	private String email;
 	
 	@NotEmpty(message = "Please enter your password.")
+	@Column(name = "pass")
 	private String password;
 
 	public Login(String email,String password) {

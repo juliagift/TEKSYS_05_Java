@@ -38,7 +38,9 @@ var validateInput = () => {
   try {
     if (
       document.getElementById("citizen_yes").checked &&
-      document.getElementById("insurance_yes").checked
+      document.getElementById("insurance_yes").checked &&
+      document.getElementById("age_yes").checked
+      
     ) {
       return true;
     }

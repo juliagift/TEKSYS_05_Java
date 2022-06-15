@@ -1,6 +1,6 @@
 package org.juliagift.copaydrugprogram.configuration;
 
-import org.juliagift.copaydrugprogram.service.UserService;
+import org.juliagift.copaydrugprogram.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,14 +15,16 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	
 	 @Autowired
-	 private UserService userService;
+	 private PatientService patientService;
 	 
+	 //Tell Spring Security to allow public unauthenticated access to the endpoints /registration and /home
 	 @Override
 	   protected void configure(HttpSecurity http) throws Exception {
 	       http
 	       .authorizeRequests()
 	       
            .antMatchers(
+                   "/home**",
                    "/registration**",
                    "/js/**",
                    "/css/**",
@@ -55,7 +57,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	 @Bean
 	   public DaoAuthenticationProvider authenticationProvider(){
 	       DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
-	       auth.setUserDetailsService(userService);
+	       auth.setUserDetailsService(patientService);
 	       auth.setPasswordEncoder(passwordEncoder());
 	       return auth;
 	   }

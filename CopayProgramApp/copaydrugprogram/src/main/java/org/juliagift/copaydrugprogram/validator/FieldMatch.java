@@ -1,4 +1,4 @@
-package org.juliagift.copaydrugprogram.validation;
+package org.juliagift.copaydrugprogram.validator;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;

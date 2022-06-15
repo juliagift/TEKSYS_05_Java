@@ -30,11 +30,8 @@ public class Card {
 	@NotNull
 	private Double benefit;
 	
-	@OneToOne(targetEntity = User.class, cascade = CascadeType.ALL)   
-	@JoinColumn(name = "user_id")
-	private User user;
+	@OneToOne(targetEntity = Patient.class, cascade = CascadeType.ALL)   
+	@JoinColumn(name = "patient_id")
+	private Patient patient;
 	
-	@OneToOne(targetEntity = Drug.class, cascade = CascadeType.ALL)
-	@JoinColumn(name = "drug_id")
-	private Drug drug;
 }

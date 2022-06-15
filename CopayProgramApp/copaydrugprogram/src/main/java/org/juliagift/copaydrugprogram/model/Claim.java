@@ -11,9 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,7 +32,7 @@ public class Claim {
 	private Long claimId;
 	
 	@NotNull
-	@Column(name = "status")
+	@Column(name = "txn_status")
 	private String status;
 	
 	@NotNull
@@ -48,20 +48,16 @@ public class Claim {
 	private Double manufacturerPayment;
 	
 	@NotNull
-	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "transaction_date")
 	private Date transactionDate;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(targetEntity = Card.class, cascade = CascadeType.ALL)
 	@JoinColumn(name = "card_id")
 	private Card card;
 	
 	@OneToOne(targetEntity = Pharmacy.class, cascade = CascadeType.ALL)
 	@JoinColumn(name = "pharmacy_id")
 	private Pharmacy pharmacy;
-	
-	@OneToOne(targetEntity = Drug.class, cascade = CascadeType.ALL)
-	@JoinColumn(name = "drug_id")
-	private Drug drug;
 
 }

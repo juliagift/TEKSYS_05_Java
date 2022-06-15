@@ -1,4 +1,4 @@
-package org.juliagift.copaydrugprogram.validation;
+package org.juliagift.copaydrugprogram.validator;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
