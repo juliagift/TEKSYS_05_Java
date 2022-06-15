@@ -62,9 +62,9 @@ public class Patient {
 	private String state;
 	
 	@NotNull
-	private Integer zip5;
+	private String zip5;
 	
-	private Integer zip4;
+	private String zip4;
 	
 	@OneToOne(targetEntity = Login.class, cascade = CascadeType.ALL)
 	@JoinColumn(name = "login_id")

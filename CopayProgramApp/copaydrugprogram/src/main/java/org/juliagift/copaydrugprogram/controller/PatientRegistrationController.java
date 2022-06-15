@@ -1,12 +1,14 @@
 package org.juliagift.copaydrugprogram.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
 
 import org.juliagift.copaydrugprogram.dto.PatientRegistrationDto;
 import org.juliagift.copaydrugprogram.service.PatientService;
+import org.juliagift.copaydrugprogram.validator.BirthDateValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +24,20 @@ public class PatientRegistrationController {
 
 	@Autowired
 	private PatientService patientService;
+	
+//	@Autowired(required = false)
+//	private BirthDateValidator birthDateValidator;
+	
+	BirthDateValidator birthDateValidator;
+	
+	
+//	@Autowired
+//	public PatientRegistrationController(BirthDateValidator birthDateValidator) {
+//		this.birthDateValidator = birthDateValidator;
+//	}
+
+
+
 
 	@ModelAttribute("patient")
 	public PatientRegistrationDto patientRegistrationDto() {
@@ -80,14 +96,31 @@ public class PatientRegistrationController {
 //		if (result.hasErrors()) {
 //			return "registration";
 //		}
+		//birthDateValidator.isValidDob(patientDto.getDob())
+		System.out.println(birthDateValidator);
 		
+		Date dateToValidate = patientService.save(patientDto).getDob();
 		
+		System.out.println(dateToValidate);
 		
-//		System.out.println("here");
-		System.out.println(patientDto);
+		if (result.hasErrors()) {
+			return "registration";
+		}
+		
+		if(birthDateValidator.isValidDob(dateToValidate))  {
+			
+			
+			patientService.save(patientDto);
+			return "redirect:/registration?success";
 
-		patientService.save(patientDto);
-		return "redirect:/registration?success";
+
+		}
+		return "redirect:/registration";
+		
+		
+		
+
+
 	}
 	
 	

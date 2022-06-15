@@ -22,24 +22,24 @@ import lombok.NoArgsConstructor;
 @FieldMatch.List({
 		@FieldMatch(first = "password", second = "confirmPassword", message = "The password fields must match"),
 		@FieldMatch(first = "email", second = "confirmEmail", message = "The email fields must match") })
-@BirthDate(message = "You must be 18 years or older")
+//@BirthDate(message = "You must be 18 years or older")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 public class PatientRegistrationDto {
 
 	@NotEmpty(message = "First name is required.")
-	@Size(min = 2, max = 10, message = "The length of your first name must be between 2 and 10 characters.")
+	@Size(min = 2, max = 15, message = "First name must be between 2 and 10 characters.")
 	private String firstName;
 
 	@NotEmpty(message = "Last name is required.")
-	@Size(min = 2, max = 10, message = "The length of your last name must be between 2 and 10 characters.")
+	@Size(min = 2, max = 15, message = "Last name must be between 2 and 10 characters.")
 	private String lastName;
 	
 	//custom validation
 	@NotNull(message = "DOB is required.")
 	@Past(message = "Date of Birth must be in the past.")
-//	@BirthDate(message = "You must be 18 years or older")
+	@BirthDate(message = "You must be 18 years or older")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dob;
 	
@@ -47,7 +47,7 @@ public class PatientRegistrationDto {
 	private String gender;
 	
 	@NotEmpty
-	@Pattern(regexp = "\\d{10}")  //phone numbers of format "1234567890"
+	@Pattern(regexp = "\\d{10}", message = "phone number format 1234567890")  
 	private String phoneNumber;
 	
 	//@NotEmpty(message = "Address is required.")
@@ -63,12 +63,12 @@ public class PatientRegistrationDto {
 	
 	@NotNull
 	//@Pattern(regexp = "^\\d{1,5}$", flags = { Flag.CASE_INSENSITIVE, Flag.MULTILINE }, message = "The Zip code is invalid.")
-	//@Pattern(regexp = "^\\d{1,5}$", message = "The Zip code is invalid. Please enter your 5-digit zip code.")
-	private Integer zip5;
+	@Pattern(regexp = "^\\d{1,5}$", message = "Invalid zip. Please enter your 5-digit zip code.")
+	private String zip5;
 	
 	//@Pattern(regexp = "^\\d{1,4}$", flags = { Flag.CASE_INSENSITIVE, Flag.MULTILINE }, message = "The Zip code is invalid.")
-	//@Pattern(regexp = "^\\d{1,4}$", message = "The Zip code is invalid. Please enter your 4-digit zip code.")
-	private Integer zip4;
+//	@Pattern(regexp = "^\\d{1,4}$", message = "Invalid zip. Please enter your 4-digit zip code.")
+	private String zip4;
 	
 	@Email
 	private String email;
