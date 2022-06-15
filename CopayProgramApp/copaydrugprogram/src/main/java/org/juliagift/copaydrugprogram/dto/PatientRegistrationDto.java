@@ -39,7 +39,7 @@ public class PatientRegistrationDto {
 	//custom validation
 	@NotNull(message = "DOB is required.")
 	@Past(message = "Date of Birth must be in the past.")
-	@BirthDate(message = "You must be 18 years or older")
+	@BirthDate(message = "You must be 18 years or older. You cannot enroll in thia copay program.")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dob;
 	

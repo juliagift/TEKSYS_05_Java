@@ -27,7 +27,7 @@ form {
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				 <!-- <button type="button" class="navbar-toggle collapsed"
+				<!-- <button type="button" class="navbar-toggle collapsed"
 					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
 					aria-controls="navbar">
 					<span class="sr-only">Home</span> <span
@@ -72,7 +72,7 @@ form {
 											<!-- <label class="form-label" for="firstName">First Name</label> -->
 											<input class="form-control form-control-lg" type="text"
 												id="firstName" name="firstName" placeholder="First Name"
-												th:field="*{firstName}"  />
+												th:field="*{firstName}" />
 											<p class="error-message"
 												th:each="error: ${#fields.errors('firstName')}"
 												th:text="${error}"></p>
@@ -93,12 +93,15 @@ form {
 									</div>
 								</div>
 
-								 <div class="row">
-									 <div class="col-md-6 mb-4 d-flex align-items-center">
+								<div class="row">
+									<div class="col-md-6 mb-4 d-flex align-items-center">
 										<div class="form-outline datepicker w-100">
 											<label for="dob" class="form-label">Date of Birth</label> <input
 												class="form-control form-control-lg" type="date" id="dob"
-												name="dob" th:field="*{dob}"/>
+												name="dob" th:field="*{dob}" required />
+											<p class="error-message"
+												th:each="error: ${#fields.errors('dob')}"
+												th:text="${error}"></p>
 										</div>
 									</div>
 									<div class="col-md-6 mb-4">
@@ -107,25 +110,27 @@ form {
 										<div class="form-check form-check-inline">
 											<label class="form-check-label" for="femaleGender">Female</label>
 											<input class="form-check-input" type="radio"
-												name="inlineRadioOptions" id="femaleGender" value="female" th:field="*{gender}"
-												checked required />
+												name="inlineRadioOptions" id="femaleGender" value="female"
+												th:field="*{gender}" checked required />
 										</div>
 
 										<div class="form-check form-check-inline">
 											<label class="form-check-label" for="maleGender">Male</label>
 											<input class="form-check-input" type="radio"
-												name="inlineRadioOptions" id="maleGender" value="male" th:field="*{gender}" />
+												name="inlineRadioOptions" id="maleGender" value="male"
+												th:field="*{gender}" />
 										</div>
 
 										<div class="form-check form-check-inline">
 											<label class="form-check-label" for="otherGender">Other</label>
 											<input class="form-check-input" type="radio"
-												name="inlineRadioOptions" id="otherGender" value="other" th:field="*{gender}" />
+												name="inlineRadioOptions" id="otherGender" value="other"
+												th:field="*{gender}" />
 										</div>
 									</div>
-								</div>  
+								</div>
 
-								 <div class="row">
+								<div class="row">
 
 									<div class="col-md-12 mb-4 pb-2">
 										<div class="form-outline"
@@ -140,9 +145,9 @@ form {
 												th:text="${error}"></p>
 										</div>
 									</div>
-								</div> 
+								</div>
 
-								 <div class="row">
+								<div class="row">
 									<div class="col-md-12 mb-4">
 										<div class="form-outline"
 											th:classappend="${#fields.hasErrors('address1')}? 'has-error':''">
@@ -188,7 +193,7 @@ form {
 									<div class="col-md-6 mb-4">
 
 										<div class="form-outline">
-										<!-- 	<label for="state" class="form-label">State</label> -->
+											<!-- 	<label for="state" class="form-label">State</label> -->
 											<select class="form-control form-control-lg" id="state"
 												name="state" required>
 												<option>Choose state</option>
@@ -228,7 +233,7 @@ form {
 												th:text="${error}"></p>
 										</div>
 									</div>
-								</div> 
+								</div>
 
 								<div class="row">
 									<div class="col-md-6 mb-4 pb-2">
@@ -314,7 +319,7 @@ form {
 											</select>
 									</div>
 								</div>  -->
- 
+
 
 								<div class="row">
 									<div class="col-md-12 mb-4">
@@ -347,8 +352,8 @@ form {
 			</div>
 		</div>
 	</form>
-	
-	
+
+
 	<!-- JavaScript -->
 	<script type="text/javascript" src="@{/js/index.js}"></script>
 </body>

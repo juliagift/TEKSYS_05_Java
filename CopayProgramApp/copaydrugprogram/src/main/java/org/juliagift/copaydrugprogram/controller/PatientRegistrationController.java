@@ -97,25 +97,40 @@ public class PatientRegistrationController {
 //			return "registration";
 //		}
 		//birthDateValidator.isValidDob(patientDto.getDob())
-		System.out.println(birthDateValidator);
 		
-		Date dateToValidate = patientService.save(patientDto).getDob();
-		
-		System.out.println(dateToValidate);
+		System.out.println("I am here in the controller");
+		System.out.println(patientDto);
+		System.out.println(result);
 		
 		if (result.hasErrors()) {
 			return "registration";
 		}
 		
-		if(birthDateValidator.isValidDob(dateToValidate))  {
-			
-			
-			patientService.save(patientDto);
-			return "redirect:/registration?success";
 
-
-		}
-		return "redirect:/registration";
+		patientService.save(patientDto);
+		return "redirect:/registration?success";
+		
+//		
+//		System.out.println(birthDateValidator);
+//		
+//		Date dateToValidate = patientService.save(patientDto).getDob();
+//		
+//		System.out.println("I am here in the controller");
+//		System.out.println(dateToValidate);
+//		
+//		if (result.hasErrors()) {
+//			return "registration";
+//		}
+//		
+//		if(birthDateValidator.isValidDob(dateToValidate))  {
+//			
+//			
+//			patientService.save(patientDto);
+//			return "redirect:/registration?success";
+//
+//
+//		}
+//		return "redirect:/registration";
 		
 		
 		

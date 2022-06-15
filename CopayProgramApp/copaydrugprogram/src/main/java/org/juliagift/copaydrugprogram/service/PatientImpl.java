@@ -47,6 +47,7 @@ public class PatientImpl implements PatientService {
 //		patient.setDrugId(registration.getDrugId());
 //		
 //		System.out.println(drug);
+		System.out.println("I am here in the service");
 		System.out.println(patient);
 		
 		
