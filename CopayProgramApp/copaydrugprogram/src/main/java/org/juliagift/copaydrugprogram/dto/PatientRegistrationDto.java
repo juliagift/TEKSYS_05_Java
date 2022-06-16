@@ -11,6 +11,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Pattern.Flag;
 import javax.validation.constraints.Size;
 
+import org.juliagift.copaydrugprogram.validator.Address2;
 import org.juliagift.copaydrugprogram.validator.BirthDate;
 import org.juliagift.copaydrugprogram.validator.FieldMatch;
 import org.juliagift.copaydrugprogram.validator.Zip4;
@@ -53,9 +54,10 @@ public class PatientRegistrationDto {
 	
 	@NotEmpty(message = "Address is required.")
 	//alphanumeric with space and dot
-	@Pattern(regexp = "^[a-zA-Z0-9 .]+$", message = "Please enter an alphanumeric address")
+	@Pattern(regexp = "^[a-zA-Z0-9 .]+$", message = "Invalid! Address can be an alphanumeric with either space and/or dot.")
 	private String address1;
 	
+	@Address2(message = "Invalid! Address can be an alphanumeric with either space and/or dot.")
 	private String address2;
 	
 	@NotEmpty(message = "City is required.")
@@ -67,12 +69,9 @@ public class PatientRegistrationDto {
 	
 	@NotNull
 	//@Pattern(regexp = "^\\d{1,5}$", flags = { Flag.CASE_INSENSITIVE, Flag.MULTILINE }, message = "The Zip code is invalid.")
-	//@Pattern(regexp = "^\\d{1,5}$", message = "Invalid zip. Please enter your 5-digit zip code.")
 	@Pattern(regexp = "\\d{5}", message = "Invalid! Enter a 5-digit zip code.")
 	private String zip5;
 	
-	//@Pattern(regexp = "^\\d{1,4}$", flags = { Flag.CASE_INSENSITIVE, Flag.MULTILINE }, message = "The Zip code is invalid.")
-//	@Pattern(regexp = "^\\d{1,4}$", message = "Invalid zip. Please enter your 4-digit zip code.")
 	@Zip4(message = "Invalid! 4-digit zip code or no input allowed.")
 	private String zip4;
 	

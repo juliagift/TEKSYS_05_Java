@@ -9,7 +9,7 @@ import javax.validation.ConstraintValidatorContext;
 public class BirthDateValidator implements ConstraintValidator<BirthDate, Date> {
 
 	@Override
-	public boolean isValid(Date value, ConstraintValidatorContext context) {
+	public boolean isValid(final Date value, final ConstraintValidatorContext context) {
 		
 		Calendar dateInCalendar = Calendar.getInstance();
 		dateInCalendar.setTime(value);
