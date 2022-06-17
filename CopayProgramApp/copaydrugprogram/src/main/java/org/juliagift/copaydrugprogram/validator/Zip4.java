@@ -18,7 +18,7 @@ import javax.validation.Payload;
 @Documented
 public @interface Zip4 {
 	
-	String message() default "{org.juliagift.copaydrugprogram.validator.Zip4.message}";
+	String message() default "{constraints.zip4}";
 
 	Class<?>[] groups() default {};
 

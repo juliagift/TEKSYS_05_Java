@@ -88,7 +88,7 @@ public class PatientRegistrationDto {
 	@NotEmpty
 	private String confirmPassword;
 
-	@AssertTrue
+	@AssertTrue(message = "Checkbox must be selected in order to register.")
 	private Boolean terms;
 
 }

@@ -22,7 +22,7 @@ public @interface BirthDate {
 	// When validation fails, we return the error message mentioned for
 	// @BirthDateValidation annotation.
 //	String message() default "You must be 18 years or older";
-	String message() default "{org.juliagift.copaydrugprogram.validator.BirthDate.message}";
+	String message() default "{constraints.birthdate}";
 
 	Class<?>[] groups() default {};
 

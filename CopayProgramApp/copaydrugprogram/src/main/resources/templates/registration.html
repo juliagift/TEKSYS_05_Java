@@ -95,7 +95,7 @@ form {
 
 								<div class="row">
 									<div class="col-md-6 mb-4 d-flex align-items-center">
-										<div class="form-outline datepicker w-100">
+										<div class="form-outline datepicker w-100" th:classappend="${#fields.hasErrors('dob')}? 'has-error':''">
 											<label for="dob" class="form-label">Date of Birth</label> <input
 												class="form-control form-control-lg" type="date" id="dob"
 												name="dob" th:field="*{dob}" required />
@@ -183,8 +183,8 @@ form {
 											th:classappend="${#fields.hasErrors('city')}? 'has-error':''">
 											<!-- <label class="form-label" for="city">City</label> -->
 											<input class="form-control form-control-lg" type="text"
-												id="city" name="city" placeholder="City" required
-												th:field="*{city}" />
+												id="city" name="city" placeholder="City" 
+												th:field="*{city}" required/>
 											<p class="error-message"
 												th:each="error: ${#fields.errors('city')}"
 												th:text="${error}"></p>
@@ -192,7 +192,7 @@ form {
 									</div>
 									<div class="col-md-6 mb-4">
 
-										<div class="form-outline">
+										<div class="form-outline" th:classappend="${#fields.hasErrors('state')}? 'has-error':''">
 											<!-- 	<label for="state" class="form-label">State</label> -->
 											<select class="form-control form-control-lg" id="state"
 												name="state" required>
@@ -202,6 +202,9 @@ form {
 												<option value="AZ">AZ</option>
 												<option value="FL">FL</option>
 											</select>
+											<p class="error-message"
+												th:each="error: ${#fields.errors('state')}"
+												th:text="${error}"></p>
 										</div>
 
 									</div>

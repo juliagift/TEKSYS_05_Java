@@ -18,7 +18,7 @@ import javax.validation.Payload;
 @Documented
 public @interface Address2 {
 	
-	String message() default "{org.juliagift.copaydrugprogram.validator.Zip4.message}";
+	String message() default "{constraints.address2}";
 
 	Class<?>[] groups() default {};
 

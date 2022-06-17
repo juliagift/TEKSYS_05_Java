@@ -15,7 +15,7 @@ public class BirthDateValidator implements ConstraintValidator<BirthDate, Date> 
 		dateInCalendar.setTime(value);
 
 			
-		return Calendar.getInstance().get(Calendar.YEAR) - dateInCalendar.get(Calendar.YEAR) >= 18;
+		return Calendar.getInstance().get(Calendar.YEAR) - dateInCalendar.get(Calendar.YEAR) > 18;
 	}
 
 }

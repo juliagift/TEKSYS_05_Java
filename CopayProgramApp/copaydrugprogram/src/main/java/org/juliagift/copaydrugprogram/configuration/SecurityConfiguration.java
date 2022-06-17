@@ -14,10 +14,13 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	
-	 @Autowired
+	 //@Autowired
 	 private PatientService patientService;
 	 
-	 //Tell Spring Security to allow public unauthenticated access to the endpoints /registration and /home
+	 
+	 
+
+	//Tell Spring Security to allow public unauthenticated access to the endpoints /registration and /home
 	 @Override
 	   protected void configure(HttpSecurity http) throws Exception {
 	       http
@@ -53,18 +56,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	   public BCryptPasswordEncoder passwordEncoder(){
 	       return new BCryptPasswordEncoder();
 	   }
-
-	 @Bean
-	   public DaoAuthenticationProvider authenticationProvider(){
-	       DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
-	       auth.setUserDetailsService(patientService);
-	       auth.setPasswordEncoder(passwordEncoder());
-	       return auth;
-	   }
-
-	 @Override
-	   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-	       auth.authenticationProvider(authenticationProvider());
-	   }
+//
+//	 @Bean
+//	   public DaoAuthenticationProvider authenticationProvider(){
+//	       DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
+//	      auth.setUserDetailsService(patientService);
+//	       auth.setPasswordEncoder(passwordEncoder());
+//	       return auth;
+//	   }
+//
+//	 @Override
+//	   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//	       auth.authenticationProvider(authenticationProvider());
+//	   }
 
 }

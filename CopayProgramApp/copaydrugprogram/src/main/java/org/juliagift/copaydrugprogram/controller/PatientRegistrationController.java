@@ -7,6 +7,8 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.juliagift.copaydrugprogram.dto.PatientRegistrationDto;
+import org.juliagift.copaydrugprogram.exception.PatientAlreadyExistsException;
+import org.juliagift.copaydrugprogram.model.Patient;
 import org.juliagift.copaydrugprogram.service.PatientService;
 import org.juliagift.copaydrugprogram.validator.BirthDateValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,19 +27,6 @@ public class PatientRegistrationController {
 	@Autowired
 	private PatientService patientService;
 	
-//	@Autowired(required = false)
-//	private BirthDateValidator birthDateValidator;
-	
-	BirthDateValidator birthDateValidator;
-	
-	
-//	@Autowired
-//	public PatientRegistrationController(BirthDateValidator birthDateValidator) {
-//		this.birthDateValidator = birthDateValidator;
-//	}
-
-
-
 
 	@ModelAttribute("patient")
 	public PatientRegistrationDto patientRegistrationDto() {
@@ -85,52 +74,28 @@ public class PatientRegistrationController {
 	// Process form input data
 	@PostMapping
 	public String registerUserAccount(@ModelAttribute("patient") @Valid PatientRegistrationDto patientDto,
-			BindingResult result) {
+			BindingResult result) throws PatientAlreadyExistsException {
 		
-		// Lookup user in database by e-mail
-//		User existingPatient = patientService.findByEmail(patientDto.getEmail());
-//		if (existingPatient != null) {
-//			result.rejectValue("email", null, "There is already an account registered with that email");
-//		}
-//
-//		if (result.hasErrors()) {
-//			return "registration";
-//		}
-		//birthDateValidator.isValidDob(patientDto.getDob())
+		// Lookup patient in database by email
+		Patient existingPatient = patientService.findByEmail(patientDto.getEmail());
+		if (existingPatient != null) {
+			result.rejectValue("email", null, "There is already an account registered with that email");
+		}
+ 
 		
 		System.out.println("I am here in the controller");
-		System.out.println(patientDto);
-		System.out.println(result);
+		System.out.println(existingPatient);
+//		System.out.println(result);
 		
 		if (result.hasErrors()) {
 			return "registration";
 		}
 		
 
-		patientService.save(patientDto);
+		patientService.registerPatient(patientDto);
 		return "redirect:/registration?success";
 		
-//		
-//		System.out.println(birthDateValidator);
-//		
-//		Date dateToValidate = patientService.save(patientDto).getDob();
-//		
-//		System.out.println("I am here in the controller");
-//		System.out.println(dateToValidate);
-//		
-//		if (result.hasErrors()) {
-//			return "registration";
-//		}
-//		
-//		if(birthDateValidator.isValidDob(dateToValidate))  {
-//			
-//			
-//			patientService.save(patientDto);
-//			return "redirect:/registration?success";
-//
-//
-//		}
-//		return "redirect:/registration";
+
 		
 		
 		
