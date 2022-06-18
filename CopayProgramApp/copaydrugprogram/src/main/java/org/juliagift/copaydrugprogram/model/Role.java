@@ -1,13 +1,10 @@
 package org.juliagift.copaydrugprogram.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -19,19 +16,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Table (name = "card")
-public class Card {
+@Table(name = "role")
+public class Role {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "card_id")
-	private Long cardId;
+	@Column(name = "role_id")
+	private Long roleId;
 	
 	@NotNull
-	private Double benefit;
+	private String name;
+
+	public Role(String name) {
+		this.name = name;
+	}
 	
-	@OneToOne(targetEntity = User.class, cascade = CascadeType.ALL)   
-	@JoinColumn(name = "user_id")
-	private User user;
 	
 }

@@ -28,7 +28,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class PatientRegistrationDto {
+public class UserRegistrationDto {
 
 	@NotEmpty(message = "First name is required.")
 	@Size(min = 2, max = 15, message = "First name must be between 2 and 10 characters.")

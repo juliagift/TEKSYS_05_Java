@@ -6,11 +6,9 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import org.juliagift.copaydrugprogram.dto.PatientRegistrationDto;
-import org.juliagift.copaydrugprogram.exception.PatientAlreadyExistsException;
-import org.juliagift.copaydrugprogram.model.Patient;
-import org.juliagift.copaydrugprogram.service.PatientService;
-import org.juliagift.copaydrugprogram.validator.BirthDateValidator;
+import org.juliagift.copaydrugprogram.dto.UserRegistrationDto;
+import org.juliagift.copaydrugprogram.model.User;
+import org.juliagift.copaydrugprogram.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,15 +20,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/registration")
-public class PatientRegistrationController {
+public class UserRegistrationController {
 
 	@Autowired
-	private PatientService patientService;
+	private UserService userService;
 	
 
-	@ModelAttribute("patient")
-	public PatientRegistrationDto patientRegistrationDto() {
-		return new PatientRegistrationDto();
+	@ModelAttribute("user")
+	public UserRegistrationDto userRegistrationDto() {
+		return new UserRegistrationDto();
 	}
 	
 	
@@ -73,18 +71,19 @@ public class PatientRegistrationController {
 	
 	// Process form input data
 	@PostMapping
-	public String registerUserAccount(@ModelAttribute("patient") @Valid PatientRegistrationDto patientDto,
-			BindingResult result) throws PatientAlreadyExistsException {
+	public String registerUserAccount(@ModelAttribute("user") @Valid UserRegistrationDto userDto,
+			BindingResult result) {
 		
 		// Lookup patient in database by email
-		Patient existingPatient = patientService.findByEmail(patientDto.getEmail());
-		if (existingPatient != null) {
+		User existingUser = userService.findByEmail(userDto.getEmail());
+		if (existingUser != null) {
 			result.rejectValue("email", null, "There is already an account registered with that email");
+			
 		}
  
 		
 		System.out.println("I am here in the controller");
-		System.out.println(existingPatient);
+		System.out.println(existingUser);
 //		System.out.println(result);
 		
 		if (result.hasErrors()) {
@@ -92,7 +91,7 @@ public class PatientRegistrationController {
 		}
 		
 
-		patientService.registerPatient(patientDto);
+		userService.registerUser(userDto);
 		return "redirect:/registration?success";
 		
 

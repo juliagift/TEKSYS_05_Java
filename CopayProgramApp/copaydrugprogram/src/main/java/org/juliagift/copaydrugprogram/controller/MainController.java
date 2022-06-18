@@ -5,14 +5,36 @@ package org.juliagift.copaydrugprogram.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+/**
+ * main controller to redirect users based on their role.
+ * this is the main controller to redirect user to their dashboard pages based on role name 
+ * * for admin it should be /admin/dashboard
+ * * for user  it should be /user/dashboard
+ *
+ * @author abhishek.somani
+ */
 
 @Controller
 public class MainController {
+	
+	@GetMapping("/home")
+	public String showHomePage() {
+		return "home";
+	}
 
 	@GetMapping("/")
 	public String root() {
 		return "index";
 	}
+	
+//	@GetMapping("/login")
+//	public  ModelAndView showLoginPage() {
+//		return new ModelAndView("login");
+//	}
+	
+	
 
 	@GetMapping("/login")
 	public String login(Model model) {
@@ -24,10 +46,17 @@ public class MainController {
 		return "user/index";
 	}
 	
-	@GetMapping("/home")
-	public String showHomePage() {
-		return "home";
-	}
+//	@GetMapping("/index")
+//	public ModelAndView userDashboard() {
+//		return new ModelAndView("index");
+//	}
+	
+//	@GetMapping("/adminDashboard")
+//	public ModelAndView showAdminDashboard() {
+//		return new ModelAndView("adminDashboard");
+//	}
+	
+	
 	
 	
 	

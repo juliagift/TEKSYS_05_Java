@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
 <title>Registration</title>
@@ -42,7 +41,7 @@ form {
 
 	<form class="vh-100 gradient-custom" id="registration"
 		style="background-color: #d1862a" th:action="@{/registration}"
-		th:object="${patient}" method="post">
+		th:object="${user}" method="post">
 		<div class="container py-5 h-100">
 			<div class="row justify-content-center align-items-center h-100">
 				<div class="col-12 col-lg-9 col-xl-7">
@@ -301,7 +300,7 @@ form {
 											<select name="drug"
 											class="form-control form-control-lg" id="drug" required>
 											<option value="0">Choose drug</option> 
-											Drugs are populated here from the PatientRegistrationController
+											Drugs are populated here from the UserRegistrationController
 											 <option th:each="drug : ${drugs}" 
 											 		th:text="${drug.name}"
 													>
