@@ -24,9 +24,19 @@ public class MainController {
 		return "home";
 	}
 
-	@GetMapping("/")
-	public String root() {
-		return "index";
+//	@GetMapping("/")
+//	public String root() {
+//		return "index";
+//	}
+	
+	@GetMapping("/userDashboard")
+	public ModelAndView showUserDashboard() {
+		return new ModelAndView("userDashboard");
+	}
+	
+	@GetMapping("/adminDashboard")
+	public ModelAndView showAdminDashboard() {
+		return new ModelAndView("adminDashboard");
 	}
 	
 //	@GetMapping("/login")

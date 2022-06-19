@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
 <head>
     <meta charset="utf-8" />
@@ -38,9 +39,12 @@
     	<h1>Patient Dashboard</h1>
         <h2>User Registration and Login Module using Spring Boot, Spring
             MVC, Spring Security, JPA/Hibernate and Thymeleaf</h2>
+             <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
 
         <p>
             Welcome <span sec:authentication="principal.username">User</span>
+            	
+			<span sec:authentication="principal.authorities">Roles</span>
         </p>
         
         

@@ -2,6 +2,8 @@ package org.juliagift.copaydrugprogram.model;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -69,6 +71,8 @@ public class User {
 	private String zip5;
 
 	private String zip4;
+	
+//	private Boolean enabled;
 
 	@OneToOne(targetEntity = Login.class, cascade = CascadeType.ALL)
 	@JoinColumn(name = "login_id")
@@ -77,5 +81,19 @@ public class User {
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Collection<Role> roles;
+	
+//	 public boolean hasRole(String roleName) {
+//		 
+//        Iterator<Role> iterator = this.roles.iterator();
+//        
+//        while (iterator.hasNext()) {
+//            Role role = iterator.next();
+//            if (role.getName().equals(roleName)) {
+//                return true;
+//            }
+//        }
+//         
+//        return false;
+//    }
 
 }

@@ -11,6 +11,7 @@ import org.juliagift.copaydrugprogram.model.User;
 import org.juliagift.copaydrugprogram.repository.RoleRepository;
 import org.juliagift.copaydrugprogram.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -30,6 +31,13 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
+	
+//	private User user;
+//	
+//	@Bean
+//	public UserServiceImpl(User user) {
+//		this.user = user;
+//	}
 
 	public User findByEmail(String email) {
 		return userRepository.findByEmail(email);
@@ -38,7 +46,7 @@ public class UserServiceImpl implements UserService {
 	public User registerUser(UserRegistrationDto userDto) {
 
 //		User existingUser = userRepository.findByEmail(userDto.getEmail());
-//		
+		
 //		if(existingUser != null) {
 //			throw new UserAlreadyExistsException("There is an account with that email address: "
 //		              + userDto.getEmail());
@@ -74,6 +82,7 @@ public class UserServiceImpl implements UserService {
 		return userRepository.save(user);
 	}
 
+
 	// this class is used by spring controller to authenticate and authorize user
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -87,6 +96,8 @@ public class UserServiceImpl implements UserService {
 		if (user == null) {
 			throw new UsernameNotFoundException("Invalid username or password.");
 		}
+		
+//		return new CustomUserDetails(user);
 		return new org.springframework.security.core.userdetails.User(user.getLogin().getEmail(),
 				user.getLogin().getPassword(), mapRolesToAuthorities(user.getRoles()));
 	}
@@ -94,5 +105,7 @@ public class UserServiceImpl implements UserService {
 	private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
 		return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
 	}
+	
+	
 
 }

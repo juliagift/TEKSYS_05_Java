@@ -38,7 +38,9 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
             <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
 
         <p>
-            Welcome <span sec:authentication="principal.username">User</span>
+            Welcome <span sec:authentication="principal.username">Admin</span>
+            	
+			<span sec:authentication="principal.authorities">Roles</span>
 
         </p>
         

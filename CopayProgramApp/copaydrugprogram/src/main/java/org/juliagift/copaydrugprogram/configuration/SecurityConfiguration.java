@@ -19,8 +19,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private UserService userService;
 	
-//	@Autowired
-//	private AuthenticationSuccessHandler successHandler;
+	@Autowired
+	private LoginSuccessHandler loginSuccessHandler;
 	
 //	@Autowired
 //	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -71,7 +71,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 					.antMatchers(			
 							"/home**", 
 							"/registration**", 
-							"/index**",
+//							"/index**",
 							"/js/**", 
 							"/css/**", 
 							"/img/**", 
@@ -80,6 +80,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.and()
 					.formLogin()
 						.loginPage("/login")
+						.successHandler(loginSuccessHandler)
 							.permitAll()
 				.and()
 					.logout()
