@@ -82,8 +82,8 @@ public class UserRegistrationController {
 		}
  
 		
-		System.out.println("I am here in the controller");
-		System.out.println(existingUser);
+//		System.out.println("I am here in the controller");
+//		System.out.println(existingUser);
 //		System.out.println(result);
 		
 		if (result.hasErrors()) {

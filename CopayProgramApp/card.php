@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Card</title>
+        <title>Copay Card</title>
         <link rel="stylesheet" type="text/css" href="./cardstyles.css" />
     </head>
     <body>

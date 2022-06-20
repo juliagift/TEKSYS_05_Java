@@ -72,12 +72,14 @@ form {
 											<input class="form-control form-control-lg" type="text"
 												id="firstName" name="firstName" placeholder="First Name"
 												th:field="*{firstName}" />
+												
 											<p class="error-message"
 												th:each="error: ${#fields.errors('firstName')}"
 												th:text="${error}"></p>
 
 										</div>
 									</div>
+														
 									<div class="col-md-6 mb-4">
 										<div class="form-outline date"
 											th:classappend="${#fields.hasErrors('lastName')}? 'has-error':''">

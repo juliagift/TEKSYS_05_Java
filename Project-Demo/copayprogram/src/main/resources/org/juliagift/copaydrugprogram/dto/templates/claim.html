@@ -23,7 +23,7 @@
 			<th>Transaction Date</th>
 			<th>Card Id</th>
 			<th>Pharmacy Name</th>
-			<th>Drug name</th>
+			<!-- <th>Drug name</th> -->
 		</tr>
 		
 		<tr th:each="claim : ${claims}">
@@ -31,11 +31,11 @@
 			<td class="align-middle" th:text="${claim.status}"></td>
 			<td class="align-middle" th:text="${claim.drugCostAtClaim}"></td>
 			<td class="align-middle" th:text="${claim.patientPayment}"></td>
-			<td class="align-middle"  th:text="${claim.manufacturerPayment}"></td>
+			<td class="align-middle" th:text="${claim.manufacturerPayment}"></td>
 			<td class="align-middle" th:text="${claim.transactionDate}"></td>
 			<td class="align-middle" th:text="${claim.card.cardId}"></td>
 			<td class="align-middle" th:text="${claim.pharmacy.name}"></td>
-			<td class="align-middle" th:text="${claim.drug.name}"></td>
+			<!-- <td class="align-middle" th:text="${claim.drug.name}"></td> -->
 
 		</tr>
 	</table>

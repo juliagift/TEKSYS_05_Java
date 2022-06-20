@@ -22,16 +22,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private LoginSuccessHandler loginSuccessHandler;
 	
-//	@Autowired
-//	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//		auth.inMemoryAuthentication()
-//			.withUser("user").password("{noop}password").roles("USER")
-//			.and()
-//			.withUser("admin").password("{noop}password").roles("ADMIN");
-//	}
-
-	
-	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http

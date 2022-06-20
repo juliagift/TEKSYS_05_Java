@@ -46,4 +46,10 @@ public class Pharmacy {
 	private Integer zip5;
 	
 	private Integer zip4;
+
+	public Pharmacy(String name) {
+		this.name = name;
+	}
+	
+	
 }

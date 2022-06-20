@@ -21,7 +21,7 @@ The AuthenticationSuccessHandler interface will be called for successful login a
 Add the logic to redirect the user’s role to the respective dashboard pages.
 */
 
-@Configuration
+@Component
 public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 	
 	@Override

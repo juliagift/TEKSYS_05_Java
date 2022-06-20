@@ -4,14 +4,18 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
+import org.juliagift.copaydrugprogram.dto.UserCard;
 import org.juliagift.copaydrugprogram.dto.UserRegistrationDto;
+import org.juliagift.copaydrugprogram.model.Card;
 import org.juliagift.copaydrugprogram.model.Login;
 import org.juliagift.copaydrugprogram.model.Role;
 import org.juliagift.copaydrugprogram.model.User;
+import org.juliagift.copaydrugprogram.repository.CardRepository;
 import org.juliagift.copaydrugprogram.repository.RoleRepository;
 import org.juliagift.copaydrugprogram.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -28,6 +32,9 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private RoleRepository roleRepository;
+	
+	@Autowired
+	private CardRepository cardRepository;
 
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
@@ -69,6 +76,8 @@ public class UserServiceImpl implements UserService {
 
 		Login login = new Login(userDto.getEmail(), passwordEncoder.encode(userDto.getPassword()));
 		user.setLogin(login);
+		
+
 
 		if (existingRole == null) {
 			user.setRoles(Arrays.asList(new Role("USER")));
@@ -78,8 +87,29 @@ public class UserServiceImpl implements UserService {
 		
 		System.out.println("I am here in the service/register");
 		System.out.println(user);
+		
+		User newUser = userRepository.save(user);
+		System.out.println(newUser);
+		
+		Double benefit = 0.0;
+		String state = userDto.getState();
+		
+		if(state.equals("AL")) {
+			benefit = 0.25;
+		} else if(state.equals("AZ")) {
+			benefit = 0.5;
+		} else if(state.equals("FL")) {
+			benefit = 0.75;
+		}
+		
+		Card card = new Card(benefit, newUser);
+		Card newCard = cardRepository.save(card);
+		
+		System.out.println(newCard);
+		
+		//UserCard userCard = new UserCard(newUser, newCard);
 
-		return userRepository.save(user);
+		return newUser;
 	}
 
 
@@ -105,6 +135,41 @@ public class UserServiceImpl implements UserService {
 	private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
 		return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
 	}
+
+//	@Override
+	//public Card findCardByUserId(Long id){
+//		Card card = cardRepository.findCardByUserId(id);
+//		
+//		System.out.println("I am here in the service/findCardByUserId");
+//		System.out.println(card);
+//		
+//		if(card == null) {
+//			throw new NotFoundException();
+//		}
+//		
+//		return card;
+//		
+	//	return cardRepository.findCardByUserId(id);
+	//}
+
+//	@Override
+//	public UserCard getUserCard(String email, Long id) {
+//		User user = userRepository.findByEmail(email);
+//		Card card = cardRepository.findCardByUserId(id);
+//		
+//		System.out.println("in user service");
+//		System.out.println(card.getCardId());
+//		System.out.println(user.getFirstName());
+//		
+//		UserCard userCard = new UserCard(user, card);
+//		
+//		System.out.println(userCard);
+//		
+//		
+//		return userCard;
+//	}
+//	
+//	
 	
 	
 

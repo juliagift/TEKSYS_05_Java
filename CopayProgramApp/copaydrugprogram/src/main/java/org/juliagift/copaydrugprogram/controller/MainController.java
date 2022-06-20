@@ -29,6 +29,31 @@ public class MainController {
 //		return "index";
 //	}
 	
+	
+	
+//	@GetMapping("/login")
+//	public  ModelAndView showLoginPage() {
+//		return new ModelAndView("login");
+//	}
+	
+//	@RequestMapping("/")
+//	public ModelAndView defaultHome() {
+//		return new ModelAndView("login");
+//	}
+//
+//	@RequestMapping("/home")
+//	public ModelAndView home() {
+//		return new ModelAndView("home");
+//	}
+
+	
+	
+
+	@GetMapping("/login")
+	public String login(Model model) {
+		return "login";
+	}
+	
 	@GetMapping("/userDashboard")
 	public ModelAndView showUserDashboard() {
 		return new ModelAndView("userDashboard");
@@ -39,16 +64,14 @@ public class MainController {
 		return new ModelAndView("adminDashboard");
 	}
 	
-//	@GetMapping("/login")
-//	public  ModelAndView showLoginPage() {
-//		return new ModelAndView("login");
-//	}
+	@GetMapping("/claim")
+	public ModelAndView submitClaim() {
+		return new ModelAndView("claim");
+	}
 	
-	
-
-	@GetMapping("/login")
-	public String login(Model model) {
-		return "login";
+	@GetMapping("/claims")
+	public ModelAndView viewClaims() {
+		return new ModelAndView("claims");
 	}
 
 	@GetMapping("/user")

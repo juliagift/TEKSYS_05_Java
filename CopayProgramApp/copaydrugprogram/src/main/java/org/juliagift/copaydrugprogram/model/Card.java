@@ -33,5 +33,14 @@ public class Card {
 	@OneToOne(targetEntity = User.class, cascade = CascadeType.ALL)   
 	@JoinColumn(name = "user_id")
 	private User user;
+
+	public Card(Double benefit, User user) {
+		this.benefit = benefit;
+		this.user = user;
+	}
+
+
+	
+	
 	
 }
