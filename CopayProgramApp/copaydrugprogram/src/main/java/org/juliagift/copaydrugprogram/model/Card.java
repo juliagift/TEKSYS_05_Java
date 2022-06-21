@@ -38,9 +38,5 @@ public class Card {
 		this.benefit = benefit;
 		this.user = user;
 	}
-
-
-	
-	
 	
 }

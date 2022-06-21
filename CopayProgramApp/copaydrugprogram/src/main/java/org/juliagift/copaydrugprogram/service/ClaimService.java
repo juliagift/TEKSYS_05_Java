@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.juliagift.copaydrugprogram.exception.ClaimNotFoundException;
 import org.juliagift.copaydrugprogram.model.Claim;
+import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
+import org.springframework.security.core.userdetails.UserDetails;
 
 public interface ClaimService {
 	
-//	Claim submitClaim();
-//	List<Claim> getAllClaims() throws ClaimNotFoundException;
+	Claim submitClaim(UserDetails userDetails) throws NotFoundException;
+	List<Claim> getAllClaims() throws NotFoundException;
 }

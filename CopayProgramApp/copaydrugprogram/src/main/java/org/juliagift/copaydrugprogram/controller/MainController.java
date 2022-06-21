@@ -2,9 +2,12 @@ package org.juliagift.copaydrugprogram.controller;
 
 
 
+import org.juliagift.copaydrugprogram.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -31,10 +34,10 @@ public class MainController {
 	
 	
 	
-//	@GetMapping("/login")
-//	public  ModelAndView showLoginPage() {
-//		return new ModelAndView("login");
-//	}
+	@GetMapping("/login")
+	public  ModelAndView showLoginPage() {
+		return new ModelAndView("login");
+	}
 	
 //	@RequestMapping("/")
 //	public ModelAndView defaultHome() {
@@ -49,15 +52,18 @@ public class MainController {
 	
 	
 
-	@GetMapping("/login")
-	public String login(Model model) {
-		return "login";
-	}
+//	@GetMapping("/login")
+//	public String login(@ModelAttribute("u") User u, Model model) {
+//		model.addAttribute("formVar", u);
+//		return "login";
+//	}
 	
-	@GetMapping("/userDashboard")
-	public ModelAndView showUserDashboard() {
-		return new ModelAndView("userDashboard");
-	}
+	
+	
+//	@GetMapping("/userDashboard")
+//	public ModelAndView showUserDashboard() {
+//		return new ModelAndView("userDashboard");
+//	}
 	
 	@GetMapping("/adminDashboard")
 	public ModelAndView showAdminDashboard() {
@@ -69,10 +75,10 @@ public class MainController {
 		return new ModelAndView("claim");
 	}
 	
-	@GetMapping("/claims")
-	public ModelAndView viewClaims() {
-		return new ModelAndView("claims");
-	}
+//	@GetMapping("/claims")
+//	public ModelAndView viewClaims() {
+//		return new ModelAndView("claims");
+//	}
 
 	@GetMapping("/user")
 	public String userIndex() {

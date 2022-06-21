@@ -1,5 +1,6 @@
 package org.juliagift.copaydrugprogram.model;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -48,9 +49,9 @@ public class Claim {
 	private Double manufacturerPayment;
 	
 	@NotNull
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	//@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "transaction_date")
-	private Date transactionDate;
+	private LocalDateTime transactionDate;
 	
 	@OneToOne(targetEntity = Card.class, cascade = CascadeType.ALL)
 	@JoinColumn(name = "card_id")

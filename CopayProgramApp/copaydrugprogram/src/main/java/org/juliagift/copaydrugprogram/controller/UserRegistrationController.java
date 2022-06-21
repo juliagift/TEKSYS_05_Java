@@ -75,7 +75,7 @@ public class UserRegistrationController {
 			BindingResult result) {
 		
 		// Lookup patient in database by email
-		User existingUser = userService.findByEmail(userDto.getEmail());
+		User existingUser = userService.findUserByEmail(userDto.getEmail());
 		if (existingUser != null) {
 			result.rejectValue("email", null, "There is already an account registered with that email");
 			
@@ -93,12 +93,6 @@ public class UserRegistrationController {
 
 		userService.registerUser(userDto);
 		return "redirect:/registration?success";
-		
-
-		
-		
-		
-
 
 	}
 	

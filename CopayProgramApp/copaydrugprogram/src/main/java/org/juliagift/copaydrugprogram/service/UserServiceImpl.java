@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
-import org.juliagift.copaydrugprogram.dto.UserCard;
 import org.juliagift.copaydrugprogram.dto.UserRegistrationDto;
 import org.juliagift.copaydrugprogram.model.Card;
 import org.juliagift.copaydrugprogram.model.Login;
@@ -39,17 +38,13 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
-//	private User user;
-//	
-//	@Bean
-//	public UserServiceImpl(User user) {
-//		this.user = user;
-//	}
 
-	public User findByEmail(String email) {
-		return userRepository.findByEmail(email);
+	@Override
+	public User findUserByEmail(String email) {
+		return userRepository.findUserByEmail(email);
 	}
-
+	
+	@Override
 	public User registerUser(UserRegistrationDto userDto) {
 
 //		User existingUser = userRepository.findByEmail(userDto.getEmail());
@@ -107,7 +102,7 @@ public class UserServiceImpl implements UserService {
 		
 		System.out.println(newCard);
 		
-		//UserCard userCard = new UserCard(newUser, newCard);
+		
 
 		return newUser;
 	}
@@ -116,7 +111,7 @@ public class UserServiceImpl implements UserService {
 	// this class is used by spring controller to authenticate and authorize user
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		User user = userRepository.findByEmail(email);
+		User user = userRepository.findUserByEmail(email);
 
 		System.out.println("I am here in the service/loaduserusername");
 		System.out.println(user);
@@ -127,7 +122,6 @@ public class UserServiceImpl implements UserService {
 			throw new UsernameNotFoundException("Invalid username or password.");
 		}
 		
-//		return new CustomUserDetails(user);
 		return new org.springframework.security.core.userdetails.User(user.getLogin().getEmail(),
 				user.getLogin().getPassword(), mapRolesToAuthorities(user.getRoles()));
 	}
@@ -135,6 +129,16 @@ public class UserServiceImpl implements UserService {
 	private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
 		return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
 	}
+
+//	@Override
+//	public Card findCardByEmail(String email) {
+//		
+//		Card card = cardRepository.findCardByEmail(email);
+//		
+//		return card;
+//	}
+
+	
 
 //	@Override
 	//public Card findCardByUserId(Long id){

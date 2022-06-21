@@ -73,7 +73,7 @@
             </nav>
             
             
-		<!-- 	<form th:action="@{/userDashboard}" th:object="${userCard}" method="get"> -->
+			
 	            <div class="container-fluid px-4">
 	                <div class="row g-3 my-2">
 	                    <div class="col-md-3">
@@ -81,7 +81,12 @@
 	                            <div>
 	                                <h3 class="fs-2">Drug name</h3>
 	                                <p class="fs-5">Products</p>
-	                                  <!-- <p class="fs-5" th:text="${userCard.cardId}"></p> -->
+	                                
+	                                <p>Email: </p>
+	                                <span sec:authentication="name">Email</span>
+	                                
+	                                <p>Card Id: </p>
+	                                  <p class="fs-5" th:text="${card.cardId}"></p>
 	                            </div>
 	
 	                            <i class="fas fa-gift fs-1 primary-text border rounded-full secondary-bg p-3"></i>
@@ -114,7 +119,7 @@
 	
 	                </div>
 	            </div>
-          <!--  </form> --> 
+            
             
         </div>
         <!-- /#page-content-wrapper -->
