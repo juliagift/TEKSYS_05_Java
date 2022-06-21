@@ -75,6 +75,11 @@ public class MainController {
 		return new ModelAndView("claim");
 	}
 	
+	@GetMapping("/delete")
+	public ModelAndView deleteUser() {
+		return new ModelAndView("delete");
+	}
+	
 //	@GetMapping("/claims")
 //	public ModelAndView viewClaims() {
 //		return new ModelAndView("claims");

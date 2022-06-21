@@ -11,6 +11,7 @@ import org.juliagift.copaydrugprogram.model.Card;
 import org.juliagift.copaydrugprogram.model.Claim;
 import org.juliagift.copaydrugprogram.model.Pharmacy;
 import org.juliagift.copaydrugprogram.model.User;
+import org.juliagift.copaydrugprogram.repository.CardRepository;
 import org.juliagift.copaydrugprogram.repository.ClaimRepository;
 import org.juliagift.copaydrugprogram.repository.PharmacyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class ClaimServiceImpl implements ClaimService {
 	
 	public final double drugCost = 100.0;
+	
 	@Autowired
-	private CardService cardService;
+	private CardRepository cardRepository;;
 	
 	@Autowired
 	private ClaimRepository claimRepository;
@@ -61,7 +63,7 @@ public class ClaimServiceImpl implements ClaimService {
 		
 		String userEmail = userDetails.getUsername();
 		
-		Card card = cardService.findCardByEmail(userEmail);
+		Card card = cardRepository.findCardByEmail(userEmail);
 		
 	
 		Claim claim = new Claim();
@@ -133,6 +135,24 @@ public class ClaimServiceImpl implements ClaimService {
 		
 	}
 
+	@Override
+	public List<Claim> getAllClaimsByCard(Card card) throws NotFoundException {
+		List<Claim> claims = new ArrayList<>();
+		
+		claims = claimRepository.getAllClaimsByCard(card.getCardId());
+		
+//		if(claims != null) {
+//			claims.forEach(claims::add);
+//		} else {
+//			throw new NotFoundException();
+//		}
+		
+		System.out.println("I am in getAllClaims");
+		System.out.println(claims);
+		
+		return claims;
+		
+	}
 	
 	
 

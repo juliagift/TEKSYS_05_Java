@@ -50,9 +50,7 @@ var validateInput = () => {
   return false;
 };
 
-// Validates that both answers are YES. If either is NO, then prints a message, and does not allow
-// user to submit a claim.
-
+// Validates that answer is YES. If NO, then prints a message.
 var validateClaimInput = () => {
   try {
     if (
@@ -61,7 +59,21 @@ var validateClaimInput = () => {
       return true;
     }
     document.getElementById("error_claim_msg").innerHTML =
-      "Click Yes to submit a claim";
+      "Click Yes to submit a claim.";
+  } catch (e) {}
+  return false;
+};
+
+// Validates that answer is YES. If NO, then prints a message.
+var validateUserInput = () => {
+  try {
+    if (
+      document.getElementById("user_yes").checked 
+    ) {
+      return true;
+    }
+    document.getElementById("error_user_msg").innerHTML =
+      "Click Yes to delete your account.";
   } catch (e) {}
   return false;
 };

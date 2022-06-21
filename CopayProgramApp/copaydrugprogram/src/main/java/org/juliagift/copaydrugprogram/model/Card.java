@@ -30,7 +30,7 @@ public class Card {
 	@NotNull
 	private Double benefit;
 	
-	@OneToOne(targetEntity = User.class, cascade = CascadeType.ALL)   
+	@OneToOne(targetEntity = User.class, cascade = CascadeType.ALL, orphanRemoval = true)   
 	@JoinColumn(name = "user_id")
 	private User user;
 

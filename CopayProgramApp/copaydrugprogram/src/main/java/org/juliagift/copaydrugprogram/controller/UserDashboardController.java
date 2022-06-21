@@ -10,6 +10,7 @@ import org.juliagift.copaydrugprogram.model.Card;
 import org.juliagift.copaydrugprogram.model.Claim;
 import org.juliagift.copaydrugprogram.model.Login;
 import org.juliagift.copaydrugprogram.model.User;
+import org.juliagift.copaydrugprogram.repository.UserRepository;
 import org.juliagift.copaydrugprogram.service.CardService;
 import org.juliagift.copaydrugprogram.service.ClaimService;
 import org.juliagift.copaydrugprogram.service.UserService;
@@ -26,6 +27,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -34,224 +36,113 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class UserDashboardController {
-		
+
 //	@Autowired
-//	private UserService userService;
-	
+//	private UserRepository userRepository;
+
 	@Autowired
 	private CardService cardService;
-	
+
 	@Autowired
 	private ClaimService claimService;
-	
+
 	@Autowired
 	private UserService userService;
-	
 
-	
 	@GetMapping("/userDashboard")
-	public String showUserDashboard(@AuthenticationPrincipal UserDetails userDetails, Model model, RedirectAttributes redirectAttributes) {
-		
+	public String showUserDashboard(@AuthenticationPrincipal UserDetails userDetails, Model model,
+			RedirectAttributes redirectAttributes) {
+
 		String userEmail = userDetails.getUsername();
-		
-		
+
 //		User user = userService.findUserByEmail(userEmail);
-		
-		
+
 		try {
 			Card card = cardService.findCardByEmail(userEmail);
 			model.addAttribute("card", card);
-			
-			
+
 		} catch (NotFoundException e) {
 			redirectAttributes.addFlashAttribute("message", "No cards found");
-			
+
 		}
-		
+
 		return "userDashboard";
-		
-		
-		
+
 	}
-	
+
 	@PostMapping("/claim")
-	public String submitClaim(@AuthenticationPrincipal UserDetails userDetails, Model model, RedirectAttributes redirectAttributes) {
-		
+	public String submitClaim(@AuthenticationPrincipal UserDetails userDetails, Model model,
+			RedirectAttributes redirectAttributes) {
+
 		try {
 			Claim claim = claimService.submitClaim(userDetails);
-			
+
 			System.out.println("userdashboard controller/submit claim");
 			System.out.println(claim);
-			
+
 			model.addAttribute("claim", claim);
 			redirectAttributes.addFlashAttribute("message", "You have successfully submitted a claim.");
 			return "redirect:/claim?success";
-			
+
 		} catch (NotFoundException e) {
 			redirectAttributes.addFlashAttribute("message", "Your claim has not been saved");
 			return "redirect:/userDashboard";
 		}
-		
+
 	}
-	
-	@DeleteMapping("/delete/{id}")
-	public String deleteUserById(@PathVariable("id") Long id, @ModelAttribute User user, RedirectAttributes redirectAttributes) throws UserNotFoundException {
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	//@DeleteMapping("/delete")
+	public String deleteUserById(@AuthenticationPrincipal UserDetails userDetails, Model model, RedirectAttributes redirectAttributes) {
 		
-		userService.deleteUserById(id);
-		
-		String message = user.getFirstName() + ", your account has been deleted.";
-		redirectAttributes.addFlashAttribute("message", message);
-		
-		return "redirect:/home";
-		
-	}
-	
-//	@ModelAttribute("login")
-//	public Login getLogin() {
-//		return new Login();
-//	}
-//	
-//	@GetMapping("/login")
-//	public String doLogin(Model model) {
-//		
-//		model.addAttribute("login", new Login());
-//		
-//		System.out.println(new Login());
-//		System.out.println(new Login().getEmail());
-//		
-//		return "login";
-//	}
-//	
-//	@PostMapping("/login")
-//	public String postLogin(@Valid Login login, Model model) {
-//		
-//		model.addAttribute("login", login);
-//		
-//		System.out.println("in login");
-//		
-//		System.out.println(login);
-//		System.out.println(login.getEmail());
-//		
-//		return "redirect:/userDashboard";
-//	}
-//	
-//	
-//	@GetMapping("/userDashboard")
-//	public String showUserDashboard(@Valid Login login, Model model, BindingResult result) {
-//		
-//		model.addAttribute("login", login);
-//		
-//		System.out.println("In the dashboard controller");
-//		System.out.println(login);
-//		
-//	;
-//
-//		
-//		return "userDashboard";
-//	}
-	
-//	@GetMapping("/login")
-//	public String login(@ModelAttribute("login") Login login, Model model) {
-//		
-//		System.out.println("in login");
-//		
-//		System.out.println(login.getEmail());
-//		model.addAttribute("formVar", login);
-//		return "login";
-//	}
-//	
-//	
-//	@RequestMapping("/userDashboard")
-//	public String showUserDashboard(@ModelAttribute("login") Login login, Model model) {
-//		
-//		String loginEmail = login.getEmail();
-//		
-//		System.out.println("In the dashboard controller");
-//		System.out.println(loginEmail);
-//		
-//		model.addAttribute("userInfo", loginEmail);
-//		
-////		Card dashboardCard = userService.findCardByEmail(email);
-////		
-////		System.out.println("In the dashboard controller");
-////		System.out.println(dashboardCard);
-////		
-////		model.addAttribute("dashboardCard", dashboardCard);
-//
-//		
-//		return "userDashboard";
-//	}
-	
-//	@GetMapping("/userDashboard")
-//	public String showUserDashboard(@RequestParam(required = false) String email, Model model) {
-//		
-//		Card dashboardCard = userService.findCardByEmail(email);
-//		
-//		System.out.println("In the dashboard controller");
-//		System.out.println(dashboardCard);
-//		
-//		model.addAttribute("dashboardCard", dashboardCard);
-//
-//		
-//		return "userDashboard";
-//	}
-	
-//	
-//	@RequestMapping("/userDashboard")
-//	@ResponseBody
-//	public String displayUserDashboard(@RequestParam("email") String email, @RequestParam("id") Long id, Model model) {
-//		
-//			UserCard userCard = userService.getUserCard(email, id);
-//			
-//			System.out.println("in the dashboard controller");
-//			
-//			System.out.println(userCard);
-//			model.addAttribute("usercard", userCard);
-//			
-//			
-//			
-//			
-//			return "userDashboard";	
-//	}
-	
-	
-//	
-//	@PostMapping("/claim")
-//	public String submitClaim(Model model) {
-//		
-//		Claim claim = claimService.submitClaim();
-//		model.addAttribute("claim", claim);
-//		
-//		return "claims";
-//		
-//		
-//	}
-//	
-//	
-//	
-	@GetMapping("/claims")
-	public String getAllClaims(Model model, RedirectAttributes redirectAttributes) {
-		List<Claim> claims;
 		try {
+			User user = userService.deleteUserById(userDetails);
 			
-			claims = claimService.getAllClaims();
-			System.out.println("In the userdashboard controller");
+			System.out.println("userdashboard controller/delete user");
+			System.out.println(user);
+			
+			model.addAttribute("user", user);
+			redirectAttributes.addFlashAttribute("message", "Your account has been deleted.");
+
+			return "redirect:/delete?success";
+			
+		} catch (UserNotFoundException e) {
+			redirectAttributes.addFlashAttribute("message", "Your account has not been deleted");
+			return "redirect:/delete?error";
+		}
+	}
+
+
+	@GetMapping("/claims")
+	public String getAllClaims(@AuthenticationPrincipal UserDetails userDetails, Model model, RedirectAttributes redirectAttributes) {
+		List<Claim> claims;
+		Card card = null;
 		
-		claims.forEach(claim -> {
-			System.out.println(claim);
-		});
+		try {
+			card = cardService.findCardByEmail(userDetails.getUsername());
+			model.addAttribute("card", card);
+
+		} catch (NotFoundException e) {
+			redirectAttributes.addFlashAttribute("message", "No cards found");
+
+		}
+
+		try {
+
+			claims = claimService.getAllClaimsByCard(card);
+			System.out.println("In the userdashboard controller");
+
+			claims.forEach(claim -> {
+				System.out.println(claim);
+			});
 			model.addAttribute("claims", claims);
 			return "claims";
 		} catch (NotFoundException e) {
-			
+
 			redirectAttributes.addFlashAttribute("message", "No claim was found.");
 			return "redirect:/userDashboard";
 		}
-			
+
 	}
-	
-	
-	
-	
+
 //}
 }

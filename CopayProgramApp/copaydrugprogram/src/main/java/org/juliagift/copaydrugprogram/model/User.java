@@ -72,9 +72,8 @@ public class User {
 
 	private String zip4;
 	
-//	private Boolean enabled;
 
-	@OneToOne(targetEntity = Login.class, cascade = CascadeType.ALL)
+	@OneToOne(targetEntity = Login.class, cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "login_id")
 	private Login login;
 
@@ -82,18 +81,6 @@ public class User {
 	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Collection<Role> roles;
 	
-//	 public boolean hasRole(String roleName) {
-//		 
-//        Iterator<Role> iterator = this.roles.iterator();
-//        
-//        while (iterator.hasNext()) {
-//            Role role = iterator.next();
-//            if (role.getName().equals(roleName)) {
-//                return true;
-//            }
-//        }
-//         
-//        return false;
-//    }
+
 
 }

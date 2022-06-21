@@ -2,15 +2,19 @@ package org.juliagift.copaydrugprogram.service;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import org.juliagift.copaydrugprogram.dto.UserRegistrationDto;
 import org.juliagift.copaydrugprogram.exception.UserNotFoundException;
 import org.juliagift.copaydrugprogram.model.Card;
+import org.juliagift.copaydrugprogram.model.Claim;
 import org.juliagift.copaydrugprogram.model.Login;
 import org.juliagift.copaydrugprogram.model.Role;
 import org.juliagift.copaydrugprogram.model.User;
 import org.juliagift.copaydrugprogram.repository.CardRepository;
+import org.juliagift.copaydrugprogram.repository.ClaimRepository;
+import org.juliagift.copaydrugprogram.repository.LoginRepository;
 import org.juliagift.copaydrugprogram.repository.RoleRepository;
 import org.juliagift.copaydrugprogram.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +39,13 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private CardRepository cardRepository;
+	
+	@Autowired
+	private LoginRepository loginRepository;
 
+	@Autowired
+	private ClaimRepository claimRepository;
+	
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
@@ -132,13 +142,23 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void deleteUserById(Long id) throws UserNotFoundException {
+	public User deleteUserById(UserDetails userDetails) throws UserNotFoundException {
 		
-		User user = userRepository.findById(id)
-						.orElseThrow(() -> new UserNotFoundException("Invalid user with id: " +id));
+		String userEmail = userDetails.getUsername();
 		
-		userRepository.delete(user);
+		Card card = cardRepository.findCardByEmail(userEmail);
 		
+		User user = card.getUser();
+		System.out.println("in the user service/deleteuserbyid");
+		System.out.println(user);
+		
+		Login login = user.getLogin();
+		user.setLogin(null);
+		
+		userRepository.save(user);
+		loginRepository.delete(login);
+		
+		return user;
 	}
 
 

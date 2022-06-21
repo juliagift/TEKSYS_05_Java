@@ -16,4 +16,6 @@ public interface UserRepository extends JpaRepository<User, Long>{
 	
 	@Query(value = "SELECT u.* FROM User u JOIN Login l ON u.login_id = l.login_id WHERE l.email = :email",  nativeQuery = true)
 	User findUserByEmail(String email);
+	
+	
 }

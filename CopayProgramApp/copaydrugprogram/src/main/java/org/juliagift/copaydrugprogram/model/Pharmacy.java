@@ -47,8 +47,8 @@ public class Pharmacy {
 	
 	private Integer zip4;
 
-	public Pharmacy(@NotNull String name, @NotNull String phoneNumber, @NotNull String address1, String address2,
-			@NotNull String city, @NotNull String state, @NotNull Integer zip5, Integer zip4) {
+	public Pharmacy(String name, String phoneNumber, String address1, String address2,
+			String city,  String state, Integer zip5, Integer zip4) {
 		this.name = name;
 		this.phoneNumber = phoneNumber;
 		this.address1 = address1;

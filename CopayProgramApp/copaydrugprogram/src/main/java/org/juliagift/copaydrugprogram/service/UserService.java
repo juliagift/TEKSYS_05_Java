@@ -12,7 +12,7 @@ public interface UserService extends UserDetailsService {
 
 	User findUserByEmail(String email);
 	User registerUser(UserRegistrationDto userDto);
-	void deleteUserById(Long id) throws UserNotFoundException;
+	User deleteUserById(UserDetails userDetails) throws UserNotFoundException;
 //	Card findCardByEmail(String email);
 //	UserCard getUserCard(String email, Long id);
 //	Card findCardByUserId(Long id);
