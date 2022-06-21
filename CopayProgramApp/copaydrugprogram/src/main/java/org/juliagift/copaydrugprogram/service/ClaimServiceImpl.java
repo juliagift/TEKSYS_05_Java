@@ -23,23 +23,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Service
 public class ClaimServiceImpl implements ClaimService {
+	
 	public final double drugCost = 100.0;
-//	@Autowired
-//	private ClaimRepository claimRepository;
-//	@Override
-//	public List<Claim> getAllClaims() throws NotFoundException {
-//		List<Claim> claims = new ArrayList<>();
-//		
-//		claims = claimRepository.findAll();
-//		
-//		if(claims != null) {
-//			claims.forEach(claims::add);
-//			
-//			return claims;
-//		} else {
-//			throw new NotFoundException();
-//		}		
-//	}
 	@Autowired
 	private CardService cardService;
 	
@@ -49,7 +34,15 @@ public class ClaimServiceImpl implements ClaimService {
 	@Autowired
 	private PharmacyRepository pharmacyRepository;
 	
-	
+//	private UserDetails userDetails;
+//	
+//	
+//	
+//	@Autowired(required=false)
+//	public ClaimServiceImpl(UserDetails userDetails) {
+//		this.userDetails = userDetails;
+//	}
+
 	@Override
 	public Claim submitClaim(UserDetails userDetails) throws NotFoundException {
 	//public Claim submitClaim(@AuthenticationPrincipal UserDetails userDetails, Model model, RedirectAttributes redirectAttributes) {
@@ -85,13 +78,34 @@ public class ClaimServiceImpl implements ClaimService {
 		
 		claim.setCard(card);
 		
-		Pharmacy pharmacy = pharmacyRepository.findById(1L).get();
+//		Pharmacy pharmacy = pharmacyRepository.getById(1L);
+//		
+//		System.out.println("Pharmacy: " +pharmacy);
+//		claim.setPharmacy(pharmacy);
+		
+		
+		
+//		Pharmacy pharmacy = pharmacyRepository.findById(1L)
+//					.orElseThrow(() -> new NotFoundException());
+		
+		Pharmacy pharmacy = null;
+		try {
+			pharmacy = pharmacyRepository.getById(1L);
+		} catch (Exception e){
+			System.out.println("No pharmacies found!");
+		}
+		System.out.println("The Pharmacy is below. #1");
+		System.out.println(pharmacy);
 		
 
 		
 		if (pharmacy == null) {
 			pharmacy = new Pharmacy("CVS 3272", "4805075399", "2371 E Guadalupe Rd", null, "Gilbert", "AZ", 85234, null);
 		}
+
+		System.out.println("The Pharmacy is below. #2");
+		System.out.println(pharmacy);
+
 		claim.setPharmacy(pharmacy);
 		
 		System.out.println("in the claim service");
@@ -106,11 +120,14 @@ public class ClaimServiceImpl implements ClaimService {
 		
 		claims = claimRepository.findAll();
 		
-		if(claims != null) {
-			claims.forEach(claims::add);
-		} else {
-			throw new NotFoundException();
-		}
+//		if(claims != null) {
+//			claims.forEach(claims::add);
+//		} else {
+//			throw new NotFoundException();
+//		}
+		
+		System.out.println("I am in getAllClaims");
+		System.out.println(claims);
 		
 		return claims;
 		

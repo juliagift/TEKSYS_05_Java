@@ -27,7 +27,7 @@
                         class="fas fa-chart-line me-2"></i>VIEW CLAIMS</a>
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-paperclip me-2"></i>EDIT PROFILE</a>
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                <a th:href="@{/delete}" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-shopping-cart me-2"></i>DELETE ACCOUNT</a>
                 <!-- <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-gift me-2"></i>Products</a>
@@ -79,14 +79,15 @@
 	                    <div class="col-md-3">
 	                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
 	                            <div>
-	                                <h3 class="fs-2">Drug name</h3>
-	                                <p class="fs-5">Products</p>
+	                              <!--   <h3 class="fs-2">Drug name</h3>
+	                                <p class="fs-5">Products</p> -->
 	                                
-	                                <p>Email: </p>
-	                                <span sec:authentication="name">Email</span>
 	                                
-	                                <p>Card Id: </p>
-	                                  <p class="fs-5" th:text="${card.cardId}"></p>
+	                                <p>Email: <span sec:authentication="name"></span></p>
+	                                <p>Card Id: <span th:text="${card.cardId}"></span></p>
+	                                
+	                                <!-- p>Card Id: </p>
+	                                  <p class="fs-5" th:text="${card.cardId}"></p> -->
 	                            </div>
 	
 	                            <i class="fas fa-gift fs-1 primary-text border rounded-full secondary-bg p-3"></i>

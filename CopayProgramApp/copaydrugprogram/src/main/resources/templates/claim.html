@@ -94,7 +94,13 @@
 
                 </div>
             </div>
-          <form th:action="@{/claim}" method="post">
+          <form th:action="@{/claim}" th:object="${claim}" method="post">
+          
+          <!-- success message -->
+			<div th:if="${param.success}">
+				<div class="alert alert-info">You've successfully
+					submitted a claim!</div>
+			</div>
 
             <p>Do you want to submit a claim?</p>
             <input type="radio" id="claim_yes" name="claim" />

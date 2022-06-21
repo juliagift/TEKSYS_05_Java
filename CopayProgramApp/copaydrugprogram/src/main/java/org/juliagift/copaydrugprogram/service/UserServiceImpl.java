@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.stream.Collectors;
 
 import org.juliagift.copaydrugprogram.dto.UserRegistrationDto;
+import org.juliagift.copaydrugprogram.exception.UserNotFoundException;
 import org.juliagift.copaydrugprogram.model.Card;
 import org.juliagift.copaydrugprogram.model.Login;
 import org.juliagift.copaydrugprogram.model.Role;
@@ -130,50 +131,17 @@ public class UserServiceImpl implements UserService {
 		return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
 	}
 
-//	@Override
-//	public Card findCardByEmail(String email) {
-//		
-//		Card card = cardRepository.findCardByEmail(email);
-//		
-//		return card;
-//	}
+	@Override
+	public void deleteUserById(Long id) throws UserNotFoundException {
+		
+		User user = userRepository.findById(id)
+						.orElseThrow(() -> new UserNotFoundException("Invalid user with id: " +id));
+		
+		userRepository.delete(user);
+		
+	}
 
-	
 
-//	@Override
-	//public Card findCardByUserId(Long id){
-//		Card card = cardRepository.findCardByUserId(id);
-//		
-//		System.out.println("I am here in the service/findCardByUserId");
-//		System.out.println(card);
-//		
-//		if(card == null) {
-//			throw new NotFoundException();
-//		}
-//		
-//		return card;
-//		
-	//	return cardRepository.findCardByUserId(id);
-	//}
-
-//	@Override
-//	public UserCard getUserCard(String email, Long id) {
-//		User user = userRepository.findByEmail(email);
-//		Card card = cardRepository.findCardByUserId(id);
-//		
-//		System.out.println("in user service");
-//		System.out.println(card.getCardId());
-//		System.out.println(user.getFirstName());
-//		
-//		UserCard userCard = new UserCard(user, card);
-//		
-//		System.out.println(userCard);
-//		
-//		
-//		return userCard;
-//	}
-//	
-//	
 	
 	
 

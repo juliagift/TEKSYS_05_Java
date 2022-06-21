@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.juliagift.copaydrugprogram.exception.ClaimNotFoundException;
+import org.juliagift.copaydrugprogram.exception.UserNotFoundException;
 import org.juliagift.copaydrugprogram.model.Card;
 import org.juliagift.copaydrugprogram.model.Claim;
 import org.juliagift.copaydrugprogram.model.Login;
@@ -19,6 +20,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,6 +43,9 @@ public class UserDashboardController {
 	
 	@Autowired
 	private ClaimService claimService;
+	
+	@Autowired
+	private UserService userService;
 	
 
 	
@@ -70,7 +75,7 @@ public class UserDashboardController {
 	}
 	
 	@PostMapping("/claim")
-	public String submitClaim(@Valid UserDetails userDetails, Model model, RedirectAttributes redirectAttributes) {
+	public String submitClaim(@AuthenticationPrincipal UserDetails userDetails, Model model, RedirectAttributes redirectAttributes) {
 		
 		try {
 			Claim claim = claimService.submitClaim(userDetails);
@@ -80,12 +85,24 @@ public class UserDashboardController {
 			
 			model.addAttribute("claim", claim);
 			redirectAttributes.addFlashAttribute("message", "You have successfully submitted a claim.");
-			return "claims";
+			return "redirect:/claim?success";
 			
 		} catch (NotFoundException e) {
 			redirectAttributes.addFlashAttribute("message", "Your claim has not been saved");
 			return "redirect:/userDashboard";
 		}
+		
+	}
+	
+	@DeleteMapping("/delete/{id}")
+	public String deleteUserById(@PathVariable("id") Long id, @ModelAttribute User user, RedirectAttributes redirectAttributes) throws UserNotFoundException {
+		
+		userService.deleteUserById(id);
+		
+		String message = user.getFirstName() + ", your account has been deleted.";
+		redirectAttributes.addFlashAttribute("message", message);
+		
+		return "redirect:/home";
 		
 	}
 	
