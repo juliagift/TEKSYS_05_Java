@@ -2,18 +2,14 @@ package org.juliagift.copaydrugprogram.dto;
 
 import java.util.Date;
 
-import javax.validation.constraints.AssertTrue;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Pattern.Flag;
 import javax.validation.constraints.Size;
 
 import org.juliagift.copaydrugprogram.validator.Address2;
 import org.juliagift.copaydrugprogram.validator.BirthDate;
-import org.juliagift.copaydrugprogram.validator.FieldMatch;
 import org.juliagift.copaydrugprogram.validator.Zip4;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -21,14 +17,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@FieldMatch.List({
-		@FieldMatch(first = "password", second = "confirmPassword", message = "The password fields must match"),
-		@FieldMatch(first = "email", second = "confirmEmail", message = "The email fields must match") })
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class UserRegistrationDto {
-
+public class UserProfileDto {
+	
+	private Long userId;
+	
 	@NotEmpty(message = "First name is required.")
 	@Size(min = 2, max = 15, message = "First name must be between 2 and 10 characters.")
 	private String firstName;
@@ -70,21 +65,4 @@ public class UserRegistrationDto {
 	
 	@Zip4(message = "Invalid! 4-digit zip code or no input allowed.")
 	private String zip4;
-	
-	@Email
-	private String email;
-
-	@Email
-	@NotEmpty
-	private String confirmEmail;
-
-	@NotEmpty
-	private String password;
-
-	@NotEmpty
-	private String confirmPassword;
-
-	@AssertTrue(message = "Checkbox must be selected in order to register.")
-	private Boolean terms;
-
 }

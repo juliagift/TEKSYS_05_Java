@@ -82,10 +82,10 @@ public class MainController {
 		return new ModelAndView("delete");
 	}
 	
-	@GetMapping("/edit")
-	public ModelAndView editUser() {
-		return new ModelAndView("edit");
-	}
+//	@GetMapping("/edit")
+//	public ModelAndView editUser() {
+//		return new ModelAndView("edit");
+//	}
 	
 //	@GetMapping("/claims")
 //	public ModelAndView viewClaims() {

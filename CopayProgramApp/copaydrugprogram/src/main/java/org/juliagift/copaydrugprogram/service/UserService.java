@@ -1,5 +1,6 @@
 package org.juliagift.copaydrugprogram.service;
 
+import org.juliagift.copaydrugprogram.dto.UserProfileDto;
 import org.juliagift.copaydrugprogram.dto.UserRegistrationDto;
 import org.juliagift.copaydrugprogram.exception.UserNotFoundException;
 import org.juliagift.copaydrugprogram.model.Card;
@@ -15,6 +16,7 @@ public interface UserService extends UserDetailsService {
 	User registerUser(UserRegistrationDto userDto);
 	User deleteUserById(UserDetails userDetails) throws UserNotFoundException;
 	Pharmacy findPharmacyById(Long Id);
+	User updateUser(UserProfileDto userProfileDto);
 	
 //	Card findCardByEmail(String email);
 //	UserCard getUserCard(String email, Long id);

@@ -6,6 +6,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.juliagift.copaydrugprogram.dto.ClaimSubmissionDto;
+import org.juliagift.copaydrugprogram.dto.UserProfileDto;
 import org.juliagift.copaydrugprogram.dto.UserRegistrationDto;
 import org.juliagift.copaydrugprogram.exception.ClaimNotFoundException;
 import org.juliagift.copaydrugprogram.exception.UserNotFoundException;
@@ -242,6 +243,35 @@ public class UserDashboardController {
 		}
 
 	}
+	
+	@GetMapping("/edit")
+	public String showEditForm(@AuthenticationPrincipal UserDetails userDetails, Model model, RedirectAttributes redirectAttributes) {
+		
+		String userEmail = userDetails.getUsername();
+		Card card = null;
+		try {
+			card = cardService.findCardByEmail(userEmail);
+		} catch (NotFoundException e) {
+			redirectAttributes.addFlashAttribute("message", "No cards found");
+		}
+		User user = card.getUser();
+		model.addAttribute("user", user);
+		
+		return "edit";
+	}
+	
+	@PostMapping("/edit")
+	public String editUserProfile(@ModelAttribute("user") @Valid UserProfileDto userProfileDto, BindingResult result) {
+		
+		if(result.hasErrors()) {
+			return "edit";
+		}
+		
+		userService.updateUser(userProfileDto);//byuserId
+		return "redirect:/edit?success";
+		
+	}
+	
 
 
 }

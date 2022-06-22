@@ -3,8 +3,10 @@ package org.juliagift.copaydrugprogram.service;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.juliagift.copaydrugprogram.dto.UserProfileDto;
 import org.juliagift.copaydrugprogram.dto.UserRegistrationDto;
 import org.juliagift.copaydrugprogram.exception.UserNotFoundException;
 import org.juliagift.copaydrugprogram.model.Card;
@@ -173,6 +175,34 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public Pharmacy findPharmacyById(Long id) {
 		return pharmacyRepository.findById(id).get();
+	}
+
+	@Override
+	public User updateUser(UserProfileDto userProfileDto) {
+		
+		Optional <User> existingUserData = userRepository.findById(userProfileDto.getUserId());
+
+		if (existingUserData.isPresent()) {
+			User existingUser = existingUserData.get();
+			existingUser.setFirstName(userProfileDto.getFirstName());
+			existingUser.setLastName(userProfileDto.getLastName());
+			existingUser.setDob(userProfileDto.getDob());
+			existingUser.setGender(userProfileDto.getGender());
+			existingUser.setPhoneNumber(userProfileDto.getPhoneNumber());
+			existingUser.setAddress1(userProfileDto.getAddress1());
+			existingUser.setAddress2(userProfileDto.getAddress2());
+			existingUser.setCity(userProfileDto.getCity());
+			existingUser.setState(userProfileDto.getState());
+			existingUser.setZip5(userProfileDto.getZip5());
+			existingUser.setZip4(userProfileDto.getZip4());
+
+			userRepository.save(existingUser);
+			
+			return existingUser;
+		}
+
+
+		return null;
 	}
 
 

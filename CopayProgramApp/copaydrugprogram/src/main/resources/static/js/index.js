@@ -1,13 +1,13 @@
 // Collection containing the list of drugs that we offer.
 // This allows us to dynamically maintain the drug list in one place,
 // across all of our pages.
-const map = new Map([
+/*const map = new Map([
   ["Diabetedox", "Used in the treatment of diabetes"],
   ["Arthriticol", "Helps with arthritis"],
   ["Urimex", "Treats kidney failure"],
   ["Thrombitinin", "Prevents the onset of deep vein thrombosis"],
   ["Cervisave", "Reduces the symptoms associated with cervical cancer"],
-]);
+]);*/
 
 // Iterate through the drug map using the forEach loop, and generate table rows in Home Page.
 map.forEach((value, key) => {
