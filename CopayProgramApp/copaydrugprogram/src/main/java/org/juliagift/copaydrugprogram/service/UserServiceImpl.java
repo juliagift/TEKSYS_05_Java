@@ -10,11 +10,13 @@ import org.juliagift.copaydrugprogram.exception.UserNotFoundException;
 import org.juliagift.copaydrugprogram.model.Card;
 import org.juliagift.copaydrugprogram.model.Claim;
 import org.juliagift.copaydrugprogram.model.Login;
+import org.juliagift.copaydrugprogram.model.Pharmacy;
 import org.juliagift.copaydrugprogram.model.Role;
 import org.juliagift.copaydrugprogram.model.User;
 import org.juliagift.copaydrugprogram.repository.CardRepository;
 import org.juliagift.copaydrugprogram.repository.ClaimRepository;
 import org.juliagift.copaydrugprogram.repository.LoginRepository;
+import org.juliagift.copaydrugprogram.repository.PharmacyRepository;
 import org.juliagift.copaydrugprogram.repository.RoleRepository;
 import org.juliagift.copaydrugprogram.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +47,9 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private ClaimRepository claimRepository;
+	
+	@Autowired
+	private PharmacyRepository pharmacyRepository;
 	
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
@@ -143,22 +148,31 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User deleteUserById(UserDetails userDetails) throws UserNotFoundException {
+		// We don't actually want to delete a user. The user is tied to financial records
+		// and we wouldn't want them to just delete their information, and create a new
+		// account and get additional benefits.
 		
+		// Instead, we'll delete their login. They will be unable to login after this
+		// and so to the user, they are effectively deleted.
 		String userEmail = userDetails.getUsername();
-		
 		Card card = cardRepository.findCardByEmail(userEmail);
-		
 		User user = card.getUser();
-		System.out.println("in the user service/deleteuserbyid");
-		System.out.println(user);
 		
+		// Set the login of this user to NULL.
+		// This is an UPDATE operation.
 		Login login = user.getLogin();
 		user.setLogin(null);
+		userRepository.save(user); 
 		
-		userRepository.save(user);
+		// Delete the login.
 		loginRepository.delete(login);
 		
 		return user;
+	}
+
+	@Override
+	public Pharmacy findPharmacyById(Long id) {
+		return pharmacyRepository.findById(id).get();
 	}
 
 

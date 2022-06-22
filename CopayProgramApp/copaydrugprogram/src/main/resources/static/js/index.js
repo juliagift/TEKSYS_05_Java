@@ -64,7 +64,7 @@ var validateClaimInput = () => {
   return false;
 };
 
-// Validates that answer is YES. If NO, then prints a message.
+/*// Validates that answer is YES. If NO, then prints a message.
 var validateUserInput = () => {
   try {
     if (
@@ -76,4 +76,18 @@ var validateUserInput = () => {
       "Click Yes to delete your account.";
   } catch (e) {}
   return false;
-};
+};*/
+
+// Validates that answer is YES. If NO, then prints a message.
+/*var validatePharmacyInput = () => {
+  try {
+    if (
+      document.getElementById("pharmacy").checked
+    ) {
+      return true;
+    }
+    document.getElementById("error_pharmacy_msg").innerHTML =
+      "Please select a pharmacy.";
+  } catch (e) {}
+  return false;
+};*/

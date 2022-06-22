@@ -53,11 +53,11 @@ public class Claim {
 	@Column(name = "transaction_date")
 	private LocalDateTime transactionDate;
 	
-	@OneToOne(targetEntity = Card.class, cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToOne(targetEntity = Card.class, cascade = CascadeType.ALL)
 	@JoinColumn(name = "card_id")
 	private Card card;
 	
-	@OneToOne(targetEntity = Pharmacy.class, cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToOne(targetEntity = Pharmacy.class, cascade = CascadeType.ALL)
 	@JoinColumn(name = "pharmacy_id")
 	private Pharmacy pharmacy;
 

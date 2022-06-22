@@ -2,7 +2,12 @@ package org.juliagift.copaydrugprogram.controller;
 
 
 
+import java.util.List;
+
+import org.juliagift.copaydrugprogram.model.Pharmacy;
 import org.juliagift.copaydrugprogram.model.User;
+import org.juliagift.copaydrugprogram.repository.PharmacyRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MainController {
+	
 	
 	@GetMapping("/home")
 	public String showHomePage() {
@@ -70,14 +76,15 @@ public class MainController {
 		return new ModelAndView("adminDashboard");
 	}
 	
-	@GetMapping("/claim")
-	public ModelAndView submitClaim() {
-		return new ModelAndView("claim");
-	}
 	
 	@GetMapping("/delete")
 	public ModelAndView deleteUser() {
 		return new ModelAndView("delete");
+	}
+	
+	@GetMapping("/edit")
+	public ModelAndView editUser() {
+		return new ModelAndView("edit");
 	}
 	
 //	@GetMapping("/claims")
@@ -85,10 +92,10 @@ public class MainController {
 //		return new ModelAndView("claims");
 //	}
 
-	@GetMapping("/user")
-	public String userIndex() {
-		return "user/index";
-	}
+//	@GetMapping("/user")
+//	public String userIndex() {
+//		return "user/index";
+//	}
 	
 //	@GetMapping("/index")
 //	public ModelAndView userDashboard() {

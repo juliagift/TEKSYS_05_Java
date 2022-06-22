@@ -1,10 +1,9 @@
 package org.juliagift.copaydrugprogram.service;
 
-import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
 
 import org.juliagift.copaydrugprogram.exception.ClaimNotFoundException;
 import org.juliagift.copaydrugprogram.model.Card;
@@ -33,85 +32,23 @@ public class ClaimServiceImpl implements ClaimService {
 	@Autowired
 	private ClaimRepository claimRepository;
 	
-	@Autowired
-	private PharmacyRepository pharmacyRepository;
-	
-//	private UserDetails userDetails;
-//	
-//	
-//	
-//	@Autowired(required=false)
-//	public ClaimServiceImpl(UserDetails userDetails) {
-//		this.userDetails = userDetails;
-//	}
 
 	@Override
-	public Claim submitClaim(UserDetails userDetails) throws NotFoundException {
-	//public Claim submitClaim(@AuthenticationPrincipal UserDetails userDetails, Model model, RedirectAttributes redirectAttributes) {
-//		String userEmail = userDetails.getUsername();//		
-//		
-//		try {
-//			Card card = cardService.findCardByEmail(userEmail);
-//			model.addAttribute("card", card);
-//			
-//			
-//		} catch (NotFoundException e) {
-//			redirectAttributes.addFlashAttribute("message", "No cards found");
-//			
-//		}
-		
-		
-		String userEmail = userDetails.getUsername();
-		
+	public Claim submitClaim(UserDetails userDetails, Pharmacy pharmacy) throws NotFoundException {
+		String userEmail = userDetails.getUsername();	
 		Card card = cardRepository.findCardByEmail(userEmail);
-		
-	
 		Claim claim = new Claim();
+		
 		claim.setDrugCostAtClaim(drugCost);
 		claim.setManufacturerPayment((1 - card.getBenefit()) * drugCost);
 		claim.setPatientPayment(card.getBenefit() * drugCost);
 		claim.setStatus("P");
-		
-		
-//		Date sqlDate = new Date(new java.util.Date().getTime());
-//		claim.setTransactionDate(sqlDate);
 		claim.setTransactionDate(LocalDateTime.now());
-
-		
 		claim.setCard(card);
-		
-//		Pharmacy pharmacy = pharmacyRepository.getById(1L);
-//		
-//		System.out.println("Pharmacy: " +pharmacy);
-//		claim.setPharmacy(pharmacy);
-		
-		
-		
-//		Pharmacy pharmacy = pharmacyRepository.findById(1L)
-//					.orElseThrow(() -> new NotFoundException());
-		
-		Pharmacy pharmacy = null;
-		try {
-			pharmacy = pharmacyRepository.getById(1L);
-		} catch (Exception e){
-			System.out.println("No pharmacies found!");
-		}
-		System.out.println("The Pharmacy is below. #1");
-		System.out.println(pharmacy);
-		
-
-		
-		if (pharmacy == null) {
-			pharmacy = new Pharmacy("CVS 3272", "4805075399", "2371 E Guadalupe Rd", null, "Gilbert", "AZ", 85234, null);
-		}
-
-		System.out.println("The Pharmacy is below. #2");
-		System.out.println(pharmacy);
-
 		claim.setPharmacy(pharmacy);
 		
-		System.out.println("in the claim service");
-		System.out.println(claim);
+//		System.out.println("in the claim service");
+//		System.out.println(claim);
 
 		return claimRepository.save(claim);
 	}
@@ -122,14 +59,8 @@ public class ClaimServiceImpl implements ClaimService {
 		
 		claims = claimRepository.findAll();
 		
-//		if(claims != null) {
-//			claims.forEach(claims::add);
-//		} else {
-//			throw new NotFoundException();
-//		}
-		
-		System.out.println("I am in getAllClaims");
-		System.out.println(claims);
+//		System.out.println("I am in getAllClaims");
+//		System.out.println(claims);
 		
 		return claims;
 		
@@ -141,14 +72,8 @@ public class ClaimServiceImpl implements ClaimService {
 		
 		claims = claimRepository.getAllClaimsByCard(card.getCardId());
 		
-//		if(claims != null) {
-//			claims.forEach(claims::add);
-//		} else {
-//			throw new NotFoundException();
-//		}
-		
-		System.out.println("I am in getAllClaims");
-		System.out.println(claims);
+//		System.out.println("I am in getAllClaims");
+//		System.out.println(claims);
 		
 		return claims;
 		

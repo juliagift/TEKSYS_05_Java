@@ -73,7 +73,7 @@ public class User {
 	private String zip4;
 	
 
-	@OneToOne(targetEntity = Login.class, cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToOne(targetEntity = Login.class, cascade = CascadeType.ALL)
 	@JoinColumn(name = "login_id")
 	private Login login;
 

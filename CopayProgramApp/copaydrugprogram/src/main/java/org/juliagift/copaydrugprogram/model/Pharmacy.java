@@ -43,12 +43,12 @@ public class Pharmacy {
 	private String state;
 	
 	@NotNull
-	private Integer zip5;
+	private String zip5;
 	
-	private Integer zip4;
+	private String zip4;
 
 	public Pharmacy(String name, String phoneNumber, String address1, String address2,
-			String city,  String state, Integer zip5, Integer zip4) {
+			String city,  String state, String zip5, String zip4) {
 		this.name = name;
 		this.phoneNumber = phoneNumber;
 		this.address1 = address1;
@@ -59,11 +59,10 @@ public class Pharmacy {
 		this.zip4 = zip4;
 	}
 
-//	public Pharmacy(String name) {
-//		this.name = name;
-//	}
-//	
-	
+	public Pharmacy(Long pharmacyId, @NotNull String name) {
+		this.pharmacyId = pharmacyId;
+		this.name = name;
+	}	
 	
 	
 }
