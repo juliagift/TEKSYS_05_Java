@@ -32,44 +32,11 @@ public class MainController {
 	public String showHomePage() {
 		return "home";
 	}
-
-//	@GetMapping("/")
-//	public String root() {
-//		return "index";
-//	}
-	
-	
 	
 	@GetMapping("/login")
 	public  ModelAndView showLoginPage() {
 		return new ModelAndView("login");
 	}
-	
-//	@RequestMapping("/")
-//	public ModelAndView defaultHome() {
-//		return new ModelAndView("login");
-//	}
-//
-//	@RequestMapping("/home")
-//	public ModelAndView home() {
-//		return new ModelAndView("home");
-//	}
-
-	
-	
-
-//	@GetMapping("/login")
-//	public String login(@ModelAttribute("u") User u, Model model) {
-//		model.addAttribute("formVar", u);
-//		return "login";
-//	}
-	
-	
-	
-//	@GetMapping("/userDashboard")
-//	public ModelAndView showUserDashboard() {
-//		return new ModelAndView("userDashboard");
-//	}
 	
 	@GetMapping("/adminDashboard")
 	public ModelAndView showAdminDashboard() {
@@ -82,30 +49,7 @@ public class MainController {
 		return new ModelAndView("delete");
 	}
 	
-//	@GetMapping("/edit")
-//	public ModelAndView editUser() {
-//		return new ModelAndView("edit");
-//	}
-	
-//	@GetMapping("/claims")
-//	public ModelAndView viewClaims() {
-//		return new ModelAndView("claims");
-//	}
 
-//	@GetMapping("/user")
-//	public String userIndex() {
-//		return "user/index";
-//	}
-	
-//	@GetMapping("/index")
-//	public ModelAndView userDashboard() {
-//		return new ModelAndView("index");
-//	}
-	
-//	@GetMapping("/adminDashboard")
-//	public ModelAndView showAdminDashboard() {
-//		return new ModelAndView("adminDashboard");
-//	}
 	
 	
 	

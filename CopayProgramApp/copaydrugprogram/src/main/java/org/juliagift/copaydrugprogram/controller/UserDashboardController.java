@@ -272,6 +272,22 @@ public class UserDashboardController {
 		
 	}
 	
+	@GetMapping("/profile")
+	public String showUserProfile(@AuthenticationPrincipal UserDetails userDetails, Model model, RedirectAttributes redirectAttributes) {
+		
+		String userEmail = userDetails.getUsername();
+		Card card = null;
+		try {
+			card = cardService.findCardByEmail(userEmail);
+		} catch (NotFoundException e) {
+			redirectAttributes.addFlashAttribute("message", "No cards found");
+		}
+		User user = card.getUser();
+		model.addAttribute("user", user);
+		
+		return "profile";
+	}
+	
 
 
 }

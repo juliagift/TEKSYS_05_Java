@@ -59,7 +59,7 @@ public class Pharmacy {
 		this.zip4 = zip4;
 	}
 
-	public Pharmacy(Long pharmacyId, @NotNull String name) {
+	public Pharmacy(Long pharmacyId, String name) {
 		this.pharmacyId = pharmacyId;
 		this.name = name;
 	}	

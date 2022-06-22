@@ -31,37 +31,6 @@ public class UserRegistrationController {
 		return new UserRegistrationDto();
 	}
 	
-	
-	
-
-//	@ModelAttribute("drugs")
-//	@GetMapping
-//	public String getDrugs(Model model) {
-//		List<Drug> drugs = new ArrayList<Drug>();
-//		drugs.add(new Drug(1L, "Diabetedox"));
-//		drugs.add(new Drug(2L, "Arthriticol"));
-//		drugs.add(new Drug(3L, "Urimex"));
-//		drugs.add(new Drug(4L, "Thrombitinin"));
-//		drugs.add(new Drug(5L, "Cervisave"));
-//		
-//		model.addAttribute("drugs", drugs);
-//		
-//		return "registration";
-//	}
-	
-//	List<Drug> drugs;
-//	
-//	@ModelAttribute
-//	public void getDrugs(Model model) {
-//		drugs = new ArrayList<Drug>();
-//		drugs.add(new Drug("Diabetedox", 100.00));
-//		drugs.add(new Drug("Arthriticol", 200.00));
-//		drugs.add(new Drug("Urimex", 300.00));
-//		drugs.add(new Drug("Thrombitinin", 400.00));
-//		drugs.add(new Drug("Cervisave", 500.00));
-//		
-//	}
-	
 	// Return registration form template
 	@GetMapping
 	public String showRegistrationForm(Model model) {
