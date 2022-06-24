@@ -61,30 +61,30 @@ public class UserDashboardController {
 	
 	List<Pharmacy> pharmacies;
 	
-	@ModelAttribute("pharmacies")
-	public void getPharmacies() {
-   
-			List<Pharmacy> thePharmacies = new ArrayList<Pharmacy>();
-			thePharmacies.add(new Pharmacy("CVS 3272", "4805075399", "2371 E Guadalupe Rd", null, "Gilbert", "AZ", "85234", null));
-			thePharmacies.add(new Pharmacy("CVS 9222", "6022725601", "4275 W Thomas Rd", null, "Phoenix", "AZ", "85019", null));
-			thePharmacies.add(new Pharmacy("Walmart 5186", "4802246900", "2501 S Market St", null, "Gilbert", "AZ", "85295", null));
-			thePharmacies.add(new Pharmacy("Walmart 3789", "6022757507", "3605 E Thomas Rd", null, "Phoenix", "AZ", "85018", null));
-			thePharmacies.add(new Pharmacy("Frys 628", "4807067340", "3949 E Chandler Blvd", null, "Phoenix", "AZ", "85048", null));
-			
-			thePharmacies.add(new Pharmacy("CVS 1822", "2519478602", "21975 Hwy 59", null, "Robertsdale", "AL", "36567", null));
-			thePharmacies.add(new Pharmacy("CVS 10516", "2568515350", "5859 Highway 53", null, "Harvest", "AL", "35749", null));
-			thePharmacies.add(new Pharmacy("Walmart 1201", "2056318110", "890 Odum Rd", null, "Gardendale", "AL", "35071", null));
-			thePharmacies.add(new Pharmacy("Walmart 7280", "2566156667", "5601 Al Highway 157", null, "Cullman", "AL", "35058", null));
-			thePharmacies.add(new Pharmacy("Birmingham Loyalty Kroger", "8005764377", "14 W Oxmoor Rd", null, "Homewood", "AL", "35209", null));
-			
-			thePharmacies.add(new Pharmacy("CVS 613", "8139351134", "9202 N Florida Ave", null, "Tampa", "FL", "33612", null));
-			thePharmacies.add(new Pharmacy("CVS 5400", "4072384726", "6790 Central Florida Pkwy", null, "Orlando", "FL", "32821", null));
-			thePharmacies.add(new Pharmacy("Walmart 5871", "3212474817", "5734 S Orange Blossom Trl", null, "Orlando", "FL", "32839", null));
-			thePharmacies.add(new Pharmacy("Walmart 2727", "3052424447", "33501 S Dixie Hwy", null, "Florida City", "FL", "33034", null));
-			thePharmacies.add(new Pharmacy("Groveland Loyalty", "8005764377", "7925 American Way", null, "Groveland", "FL", "34736", null));
-			
-	}
-			
+//	@ModelAttribute("pharmacies")
+//	public void getPharmacies() {
+//   
+//			List<Pharmacy> thePharmacies = new ArrayList<Pharmacy>();
+//			thePharmacies.add(new Pharmacy("CVS 3272", "4805075399", "2371 E Guadalupe Rd", null, "Gilbert", "AZ", "85234", null));
+//			thePharmacies.add(new Pharmacy("CVS 9222", "6022725601", "4275 W Thomas Rd", null, "Phoenix", "AZ", "85019", null));
+//			thePharmacies.add(new Pharmacy("Walmart 5186", "4802246900", "2501 S Market St", null, "Gilbert", "AZ", "85295", null));
+//			thePharmacies.add(new Pharmacy("Walmart 3789", "6022757507", "3605 E Thomas Rd", null, "Phoenix", "AZ", "85018", null));
+//			thePharmacies.add(new Pharmacy("Frys 628", "4807067340", "3949 E Chandler Blvd", null, "Phoenix", "AZ", "85048", null));
+//			
+//			thePharmacies.add(new Pharmacy("CVS 1822", "2519478602", "21975 Hwy 59", null, "Robertsdale", "AL", "36567", null));
+//			thePharmacies.add(new Pharmacy("CVS 10516", "2568515350", "5859 Highway 53", null, "Harvest", "AL", "35749", null));
+//			thePharmacies.add(new Pharmacy("Walmart 1201", "2056318110", "890 Odum Rd", null, "Gardendale", "AL", "35071", null));
+//			thePharmacies.add(new Pharmacy("Walmart 7280", "2566156667", "5601 Al Highway 157", null, "Cullman", "AL", "35058", null));
+//			thePharmacies.add(new Pharmacy("Birmingham Loyalty Kroger", "8005764377", "14 W Oxmoor Rd", null, "Homewood", "AL", "35209", null));
+//			
+//			thePharmacies.add(new Pharmacy("CVS 613", "8139351134", "9202 N Florida Ave", null, "Tampa", "FL", "33612", null));
+//			thePharmacies.add(new Pharmacy("CVS 5400", "4072384726", "6790 Central Florida Pkwy", null, "Orlando", "FL", "32821", null));
+//			thePharmacies.add(new Pharmacy("Walmart 5871", "3212474817", "5734 S Orange Blossom Trl", null, "Orlando", "FL", "32839", null));
+//			thePharmacies.add(new Pharmacy("Walmart 2727", "3052424447", "33501 S Dixie Hwy", null, "Florida City", "FL", "33034", null));
+//			thePharmacies.add(new Pharmacy("Groveland Loyalty", "8005764377", "7925 American Way", null, "Groveland", "FL", "34736", null));
+//			
+//	}
+//			
 //			for (Pharmacy pharmacy : thePharmacies) {
 //				pharmacyRepository.save(pharmacy);
 //			}

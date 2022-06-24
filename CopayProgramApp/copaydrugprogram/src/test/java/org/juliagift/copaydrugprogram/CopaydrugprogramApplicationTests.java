@@ -1,6 +1,5 @@
 package org.juliagift.copaydrugprogram;
 
-import org.juliagift.copaydrugprogram.packageA.UserRepositoryTest;
 import org.juliagift.copaydrugprogram.repository.UserRepository;
 import org.juliagift.copaydrugprogram.service.UserService;
 import org.junit.jupiter.api.Test;
@@ -10,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ExtendWith(SpringExtension.class)
-@SuiteClasses({UserRepositoryTest.class})
+@SuiteClasses({})
 @SpringBootTest
 class CopaydrugprogramApplicationTests {
 	

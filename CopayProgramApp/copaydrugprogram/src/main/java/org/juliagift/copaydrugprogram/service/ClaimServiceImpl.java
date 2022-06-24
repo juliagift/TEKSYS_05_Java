@@ -24,7 +24,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Service
 public class ClaimServiceImpl implements ClaimService {
 	
-	public final double drugCost = 100.0;
+	public static final double DRUG_COST = 100.0;
 	
 	@Autowired
 	private CardRepository cardRepository;;
@@ -39,9 +39,9 @@ public class ClaimServiceImpl implements ClaimService {
 		Card card = cardRepository.findCardByEmail(userEmail);
 		Claim claim = new Claim();
 		
-		claim.setDrugCostAtClaim(drugCost);
-		claim.setManufacturerPayment((1 - card.getBenefit()) * drugCost);
-		claim.setPatientPayment(card.getBenefit() * drugCost);
+		claim.setDrugCostAtClaim(DRUG_COST);
+		claim.setManufacturerPayment((1 - card.getBenefit()) * DRUG_COST);
+		claim.setPatientPayment(card.getBenefit() * DRUG_COST);
 		claim.setStatus("P");
 		claim.setTransactionDate(LocalDateTime.now());
 		claim.setCard(card);
