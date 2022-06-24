@@ -1,8 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab&family=Tiro+Devanagari+Marathi:ital@0;1&family=Tiro+Devanagari+Sanskrit&display=swap");
 
-html {
-  background-image: url("@{/img/home-background.jpg}");  
-  height: 100%;
+* {
+  margin: 0;
+  padding: 0;
+} 
+
+#content {
+  background-image: url("../img/home-background.jpg");  
+  height: 100vh;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -28,8 +33,21 @@ html {
   line-height: 1.5;
 }
 
-table,
+/* table,
 th,
 td {
   border: 2px solid black;
+}
+ */
+ 
+ .navbar-header a {
+ float:right;
+ }
+ 
+ #login {
+  background-image: url("../img/home-background.jpg");  
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }

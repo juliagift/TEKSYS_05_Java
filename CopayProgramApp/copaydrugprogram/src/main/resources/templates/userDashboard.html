@@ -16,27 +16,13 @@
     <div class="d-flex" id="wrapper">
         <!-- Sidebar -->
         <div class="bg-white" id="sidebar-wrapper">
-            <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
-                    class="fas fa-user-secret me-2"></i>Copay</div>
+            <div class="sidebar-heading text-center py-4 primary-text fs-4 text-uppercase border-bottom">Copay Program</div>
             <div class="list-group list-group-flush my-3">
-                <a th:href="@{/userDashboard}" class="list-group-item list-group-item-action bg-transparent second-text active"><i
-                        class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
-                <a th:href="@{/claim}" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fas fa-project-diagram me-2"></i>SUBMIT CLAIM</a>
-                <a th:href="@{/claims}" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fas fa-chart-line me-2"></i>VIEW CLAIMS</a>
-                <a th:href="@{/edit}" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fas fa-paperclip me-2"></i>EDIT PROFILE</a>
-                <a th:href="@{/delete}" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fas fa-shopping-cart me-2"></i>DELETE ACCOUNT</a>
-                <!-- <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fas fa-gift me-2"></i>Products</a>
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fas fa-comment-dots me-2"></i>Chat</a>
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fas fa-map-marker-alt me-2"></i>Outlet</a>
-                <a href="#" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
-                        class="fas fa-power-off me-2"></i>Logout</a> -->
+                <a th:href="@{/userDashboard}" class="list-group-item list-group-item-action bg-transparent second-text active">Dashboard</a>
+                <a th:href="@{/claim}" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">SUBMIT CLAIM</a>
+                <a th:href="@{/claims}" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">VIEW CLAIMS</a>
+                <a th:href="@{/edit}" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">EDIT PROFILE</a>
+                <a th:href="@{/delete}" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">DELETE ACCOUNT</a>
             </div>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -60,7 +46,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-user me-2"></i><span sec:authentication="principal.username"></span>
+                                <i class="fas fa-user me-2"></i><span th:text="${card.user.firstName}"></span> <span th:text="${card.user.lastName}"></span>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" th:href="@{/profile}">Profile</a></li>
@@ -76,46 +62,20 @@
 	            <div class="container-fluid px-4">
 	                <div class="row g-3 my-2">
 	                    <div class="col-md-3">
-	                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+	                        <div class="p-3 bg-white shadow-sm d-flex  align-items-left rounded">
 	                            <div>
-	                              <!--   <h3 class="fs-2">Drug name</h3>
-	                                <p class="fs-5">Products</p> -->
+	                             
 	                                
-	                                
+	                                <p>Name: <span th:text="${card.user.firstName}"></span> <span th:text="${card.user.lastName}"></span></p>
+	                                 <p>Card Id: <span th:text="${card.cardId}"></span></p>
 	                                <p>Email: <span sec:authentication="name"></span></p>
-	                                <p>Card Id: <span th:text="${card.cardId}"></span></p>
-	                                
-	                                <!-- p>Card Id: </p>
-	                                  <p class="fs-5" th:text="${card.cardId}"></p> -->
+	                                <p>Address: <span th:text="${card.user.city}"></span>, <span th:text="${card.user.state}"></span> <span th:text="${card.user.zip5}"></span></p>
+	    
 	                            </div>
 	
-	                            <i class="fas fa-gift fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+	                           
 	                        </div>
 	                    </div>
-	
-	
-	                   <!--  <div class="col-md-3">
-	                        <div class="card_container">
-	                            <div class="card">
-	                                <div class="card-container">
-	                                    <h1 style="color: purple" th:text="${user.firstName}" th:text="${user.lastName}">
-	                                    </h1>
-	                                    <br /><br /><br /><br /><br /><br /><br />
-	                                    <h3 th:text="${user.state}" , th:text="${user.zip5}">
-	                                    </h3>
-	                                    <br />
-	                                    <h3 th:text="${user.dob}">DOB:
-	
-	                                    </h3>
-	                                    <br /><br /><br />
-	                                        <h3 id="random"></h3>
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </div> -->
-	
-	
-	
 	
 	                </div>
 	            </div>

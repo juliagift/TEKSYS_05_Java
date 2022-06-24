@@ -10,12 +10,12 @@
 ]);*/
 
 // Iterate through the drug map using the forEach loop, and generate table rows in Home Page.
-map.forEach((value, key) => {
+/*map.forEach((value, key) => {
   try {
     document.getElementById("demo").innerHTML +=
       "<tr><td>" + `${key}` + "</td><td>" + `${value}` + "</td></tr>";
   } catch (e) {}
-});
+});*/
 
 // Iterate through the drug map using the forEach loop, and generate dropdown options in Registration Page.
 //map.forEach((value, key) => {
@@ -44,7 +44,7 @@ var validateInput = () => {
     ) {
       return true;
     }
-    document.getElementById("errormsg").innerHTML =
+    document.getElementById("error_home_msg").innerHTML =
       "I'm sorry you're not eligible for this program!";
   } catch (e) {}
   return false;

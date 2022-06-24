@@ -24,44 +24,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http
-//				.authorizeRequests()
-//					.antMatchers(
-//								"/js/**", 
-//								"/css/**", 
-//								"/img/**", 
-//								"/webjars/**")
-//							.permitAll()
-//				
-//					.antMatchers("/home/**").access("hasRole('USER') or hasRole('ADMIN')")
-//					.antMatchers("/registration/**").access("hasRole('USER')")
-//					.antMatchers("/index/**").access("hasRole('USER')")
-//					.antMatchers("/adminDashboard/**").access("hasRole('ADMIN')")
-//					
-//						.anyRequest().authenticated()
-//						
-//						
-//						
-//					.and()
-//						.formLogin()
-//							.loginPage("/login")
-//								.successHandler(successHandler)
-//								.failureUrl("/login?error")
-//									.permitAll()
-//					.and()
-//						.logout()
-//							.invalidateHttpSession(true)
-//							.clearAuthentication(true)
-//							.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-//							.logoutSuccessUrl("/login?logout")
-//									.permitAll()
-//					;		
-							
+		http			
 				.authorizeRequests()
 					.antMatchers(			
 							"/home**", 
 							"/registration**", 
-//							"/index**",
 							"/js/**", 
 							"/css/**", 
 							"/img/**", 
@@ -97,10 +64,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.authenticationProvider(authenticationProvider());
-//		auth.inMemoryAuthentication()
-//		.withUser("user").password("{noop}password").roles("USER")
-//		.and()
-//		.withUser("admin").password("{noop}password").roles("ADMIN");
 		
 	}
 
